@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { useAsyncAction, useTheme } from '../../hooks';
-import { renderWithProps } from '../../lib';
+import { renderWithProps } from '../../utils';
 import {
   ActivityIndicator,
   DEFAULT_MOUNT_KEYFRAME,

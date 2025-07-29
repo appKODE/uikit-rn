@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import type { IconProps } from '../../types';
 
-import { renderWithProps } from '../../lib';
+import { renderWithProps } from '../../utils';
 import { Touchable } from '../../primitives';
 import { Divider } from '../divider';
 

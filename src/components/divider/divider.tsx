@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import type { BorderColorKeys, IconProps, TextColorKeys } from '../../types';
 
-import { renderWithProps } from '../../lib';
+import { renderWithProps } from '../../utils';
 import { Typography } from '../../primitives';
 
 type OffsetStyleParams = {

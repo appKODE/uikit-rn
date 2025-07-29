@@ -16,7 +16,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useTheme } from '../hooks';
-import { getHexWithOpacity } from '../lib';
+import { getHexWithOpacity } from '../utils';
 
 export type TouchableProps = PressableProps & {
   rippleColor?: string;

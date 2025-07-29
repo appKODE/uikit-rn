@@ -7,7 +7,7 @@ import type { IconProps } from '../../types';
 import type { CheckboxType } from './types';
 
 import { useTheme } from '../../hooks';
-import { renderWithProps } from '../../lib';
+import { renderWithProps } from '../../utils';
 import { SwitchTransition, Touchable } from '../../primitives';
 import { getIconColor } from './lib/get-icon-color';
 

@@ -1,6 +1,6 @@
 import { Appearance } from 'react-native';
 
-import { createTheme } from './lib';
+import { createTheme } from './utils';
 import { type DefaultTheme } from './types';
 
 export const typography: DefaultTheme['typography'] = {
