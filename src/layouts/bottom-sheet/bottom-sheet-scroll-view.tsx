@@ -1,1 +1,1 @@
-export { BottomSheetScrollView } from '@gorhom/bottom-sheet'
+export { BottomSheetScrollView } from '@gorhom/bottom-sheet';

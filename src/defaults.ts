@@ -1,7 +1,7 @@
-import { Appearance } from 'react-native'
+import { Appearance } from 'react-native';
 
-import { createTheme } from './lib'
-import { type DefaultTheme } from './types'
+import { createTheme } from './lib';
+import { type DefaultTheme } from './types';
 
 export const typography: DefaultTheme['typography'] = {
   body1: {
@@ -64,7 +64,7 @@ export const typography: DefaultTheme['typography'] = {
     fontWeight: 600,
     lineHeight: 20,
   },
-}
+};
 
 export const light: DefaultTheme = createTheme({
   palette: {
@@ -140,7 +140,7 @@ export const light: DefaultTheme = createTheme({
     },
   },
   typography,
-})
+});
 
 export const dark: DefaultTheme = createTheme({
   palette: {
@@ -216,7 +216,7 @@ export const dark: DefaultTheme = createTheme({
     },
   },
   typography,
-})
+});
 
 export const defaultConfig = {
   settings: {
@@ -226,4 +226,4 @@ export const defaultConfig = {
     dark,
     light,
   },
-}
+};

@@ -1,1 +1,1 @@
-export { Divider, type DividerProps } from './divider'
+export { Divider, type DividerProps } from './divider';

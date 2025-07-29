@@ -1,10 +1,10 @@
-import { type CreateVariants } from '../../types'
+import { type CreateVariants } from '../../types';
 
-export type ButtonSize = 'large' | 'medium'
+export type ButtonSize = 'large' | 'medium';
 
-type ButtonContentColor = 'accent' | 'negative'
-type ButtonType = 'ghost' | 'primary' | 'secondary'
+type ButtonContentColor = 'accent' | 'negative';
+type ButtonType = 'ghost' | 'primary' | 'secondary';
 
 export type ButtonVariant =
   | 'ghostNeutral'
-  | CreateVariants<ButtonType, ButtonContentColor>
+  | CreateVariants<ButtonType, ButtonContentColor>;

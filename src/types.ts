@@ -1,4 +1,4 @@
-import { type TextStyle } from 'react-native'
+import { type TextStyle } from 'react-native';
 
 /**
  * Surface colors
@@ -18,7 +18,7 @@ export type SurfaceColorKeys =
   | 'layerPositivePale'
   | 'layerTranslucent'
   | 'layerWarning'
-  | 'layerWarningPale'
+  | 'layerWarningPale';
 
 /**
  * Border colors
@@ -26,7 +26,7 @@ export type SurfaceColorKeys =
 export type BorderColorKeys =
   | 'borderAccent'
   | 'borderNegative'
-  | 'borderRegular'
+  | 'borderRegular';
 
 /**
  * Text colors
@@ -45,7 +45,7 @@ export type TextColorKeys =
   | 'textQuaternary'
   | 'textSecondary'
   | 'textTertiary'
-  | 'textWarning'
+  | 'textWarning';
 
 /**
  * Icon colors
@@ -64,7 +64,7 @@ export type IconColorKeys =
   | 'iconQuaternary'
   | 'iconSecondary'
   | 'iconTertiary'
-  | 'iconWarning'
+  | 'iconWarning';
 
 /**
  * Interactive colors
@@ -74,25 +74,25 @@ export type InteractiveIconColorKeys =
   | 'iconDisabled'
   | 'iconNegativeDisabled'
   | 'iconOnAccentDisabled'
-  | 'iconOnNegativeDisabled'
+  | 'iconOnNegativeDisabled';
 
 export type InteractiveLayerColorKeys =
   | 'layerAccentDisabled'
   | 'layerNegativeDisabled'
   | 'layerPressed'
-  | 'layerTranslucentDisabled'
+  | 'layerTranslucentDisabled';
 
 export type InteractiveTextColorKeys =
   | 'textAccentDisabled'
   | 'textDisabled'
   | 'textNegativeDisabled'
   | 'textOnAccentDisabled'
-  | 'textOnNegativeDisabled'
+  | 'textOnNegativeDisabled';
 
 export type InteractiveColorKeys =
   | InteractiveIconColorKeys
   | InteractiveLayerColorKeys
-  | InteractiveTextColorKeys
+  | InteractiveTextColorKeys;
 
 export type TypographyVariants =
   | 'body1'
@@ -106,37 +106,37 @@ export type TypographyVariants =
   | 'headline4'
   | 'headline5'
   | 'subhead1'
-  | 'subhead2'
+  | 'subhead2';
 
-export type TypographyColorKeys = InteractiveTextColorKeys | TextColorKeys
-export type IconColorFullKeys = IconColorKeys | InteractiveIconColorKeys
+export type TypographyColorKeys = InteractiveTextColorKeys | TextColorKeys;
+export type IconColorFullKeys = IconColorKeys | InteractiveIconColorKeys;
 
 export type DefaultTheme = {
   components: {
     bottomSheet: {
-      borderRadius: number
-      contentBackgroundColor: SurfaceColorKeys
-      indicatorBackgroundColor: IconColorKeys
-      indicatorBorderRadius?: number
-      indicatorHeight?: number
-      indicatorTopOffset?: number
-      indicatorWidth?: number
-      modalTopOffset: number
-      overlayColor: SurfaceColorKeys
-    }
+      borderRadius: number;
+      contentBackgroundColor: SurfaceColorKeys;
+      indicatorBackgroundColor: IconColorKeys;
+      indicatorBorderRadius?: number;
+      indicatorHeight?: number;
+      indicatorTopOffset?: number;
+      indicatorWidth?: number;
+      modalTopOffset: number;
+      overlayColor: SurfaceColorKeys;
+    };
     button: {
-      borderRadius: number
-    }
+      borderRadius: number;
+    };
     checkbox: {
-      hitSlop: number
-      iconSize: number
-      rippleRadius: number
-    }
+      hitSlop: number;
+      iconSize: number;
+      rippleRadius: number;
+    };
     page: {
-      paddingHorizontal: number
-      paddingVertical: number
-    }
-  }
+      paddingHorizontal: number;
+      paddingVertical: number;
+    };
+  };
   palette: {
     all: Record<
       | BorderColorKeys
@@ -145,31 +145,31 @@ export type DefaultTheme = {
       | SurfaceColorKeys
       | TextColorKeys,
       string
-    >
-    border: Record<BorderColorKeys, string>
-    icon: Record<IconColorKeys, string>
-    interactive: Record<InteractiveColorKeys, string>
-    surface: Record<SurfaceColorKeys, string>
-    text: Record<TextColorKeys, string>
-  }
+    >;
+    border: Record<BorderColorKeys, string>;
+    icon: Record<IconColorKeys, string>;
+    interactive: Record<InteractiveColorKeys, string>;
+    surface: Record<SurfaceColorKeys, string>;
+    text: Record<TextColorKeys, string>;
+  };
   scale: {
-    auto: (value: number) => number
-    fontSize: (value: number) => number
-    height: (value: number) => number
-    width: (value: number) => number
-  }
+    auto: (value: number) => number;
+    fontSize: (value: number) => number;
+    height: (value: number) => number;
+    width: (value: number) => number;
+  };
   typography: Record<
     TypographyVariants,
     Pick<TextStyle, 'fontSize' | 'fontWeight' | 'lineHeight'>
-  >
-}
+  >;
+};
 
 export type IconProps = {
-  color?: IconColorFullKeys
-  size?: number
-}
+  color?: IconColorFullKeys;
+  size?: number;
+};
 
 export type CreateVariants<
   Variant1 extends string,
   Variant2 extends string,
-> = `${Variant1}${Capitalize<Variant2>}`
+> = `${Variant1}${Capitalize<Variant2>}`;

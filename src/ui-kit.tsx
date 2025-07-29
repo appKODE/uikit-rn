@@ -1,15 +1,15 @@
-import { AppRegistry } from 'react-native'
+import { AppRegistry } from 'react-native';
 
-import { StyleSheet } from 'react-native-unistyles'
+import { StyleSheet } from 'react-native-unistyles';
 
-type TUIkitConfig = Parameters<typeof StyleSheet.configure>[0]
+type TUIkitConfig = Parameters<typeof StyleSheet.configure>[0];
 
 export const createThemedApp = <T extends {}>(
   appName: string,
   AppComponent: () => React.ComponentType<T>,
-  config: TUIkitConfig,
+  config: TUIkitConfig
 ) => {
-  StyleSheet.configure(config)
+  StyleSheet.configure(config);
 
-  AppRegistry.registerComponent(appName, AppComponent)
-}
+  AppRegistry.registerComponent(appName, AppComponent);
+};

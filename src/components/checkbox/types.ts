@@ -1,1 +1,1 @@
-export type CheckboxType = 'indeterminate' | 'selected' | 'unselected'
+export type CheckboxType = 'indeterminate' | 'selected' | 'unselected';

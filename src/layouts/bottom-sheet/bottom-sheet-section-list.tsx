@@ -1,1 +1,1 @@
-export { BottomSheetSectionList } from '@gorhom/bottom-sheet'
+export { BottomSheetSectionList } from '@gorhom/bottom-sheet';

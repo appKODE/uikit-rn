@@ -1,32 +1,32 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react';
 
 type AsyncAction<T extends unknown[] = any[]> = (
   ...args: T
-) => Promise<void> | void
+) => Promise<void> | void;
 
 export const useAsyncAction = <T extends unknown[] = []>(
-  action?: AsyncAction<T> | null,
+  action?: AsyncAction<T> | null
 ) => {
-  const [isAsyncLoading, setIsAsyncLoading] = useState(false)
+  const [isAsyncLoading, setIsAsyncLoading] = useState(false);
 
   const asyncAction = useCallback(
     async (...args: T) => {
       if (!action) {
-        return
+        return;
       }
 
       try {
-        const result = action(...args)
+        const result = action(...args);
         if (result instanceof Promise) {
-          setIsAsyncLoading(true)
-          await result
+          setIsAsyncLoading(true);
+          await result;
         }
       } finally {
-        setIsAsyncLoading(false)
+        setIsAsyncLoading(false);
       }
     },
-    [action],
-  )
+    [action]
+  );
 
-  return { asyncAction, isAsyncLoading }
-}
+  return { asyncAction, isAsyncLoading };
+};

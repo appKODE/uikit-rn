@@ -1,2 +1,2 @@
-export { dark } from './dark'
-export { light } from './light'
+export { dark } from './dark';
+export { light } from './light';

@@ -1,4 +1,4 @@
 export type BottomSheetRef = {
-  closeBottomSheetModal: () => void
-  openBottomSheetModal: () => void
-}
+  closeBottomSheetModal: () => void;
+  openBottomSheetModal: () => void;
+};

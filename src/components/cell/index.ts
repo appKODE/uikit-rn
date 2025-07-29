@@ -1,1 +1,1 @@
-export { Cell, type CellProps } from './cell'
+export { Cell, type CellProps } from './cell';
