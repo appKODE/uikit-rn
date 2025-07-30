@@ -17,6 +17,38 @@
 - [react-native-keyboard-controller](https://kirillzyusko.github.io/react-native-keyboard-controller/)
 - [react-native-safe-area-context](https://www.npmjs.com/package/react-native-safe-area-context)
 
+#### 📥 Установка
+
+- установить все зависимости выше, согласно их документации
+- `yarn add @kode-frontend/uikit-rn`
+- Настроить `react-native-unistyles/plugin` плагин
+```js
+//bebel.config.js
+
+module.exports = function (api) {
+  api.cache(true)
+
+  return {
+    ...
+    plugins: [
+      ... // any plugins 
+      [
+        'react-native-unistyles/plugin',
+        {
+          root: 'src',
+          /*
+            Нужно добавить `autoProcessPaths`
+          */
+          autoProcessPaths: [
+            '@kode-frontend/uikit-rn',
+          ],
+        },
+      ],
+    ],
+  }
+}
+```
+
 #### 🧑‍💻 Использование
 
 1. __Задекларируй темы__
