@@ -1,4 +1,6 @@
-### 💅 KODE UI kit 
+# 💅 KODE UI kit 
+
+React Native имплементация [UI-кита](https://www.figma.com/design/lAtx3eLh9DZcY8QJhnyavC/KODE-UI) от компании [KODE](https://kode.ru)
 
 #### 🛠️ Минимальные требования
 
