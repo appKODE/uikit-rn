@@ -9,7 +9,7 @@ import type { CheckboxType } from './types';
 import { useTheme } from '../../hooks';
 import { renderWithProps } from '../../utils';
 import { SwitchTransition, Touchable } from '../../primitives';
-import { getIconColor } from './lib/get-icon-color';
+import { getIconColor } from './utils/get-icon-color';
 
 const mapTypeToActiveNumber: Record<CheckboxType, number> = {
   indeterminate: 2,

@@ -1,19 +1,19 @@
-import { View } from 'react-native';
-import { StyleSheet } from '@kode-frontend/uikit-rn';
-import { Typography } from '@kode-frontend/uikit-rn/primitives';
+import StorybookUI from '../.rnstorybook';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 
-export default function App() {
+export const App = ({}: {}) => {
   return (
-    <View style={styles.container}>
-      <Typography variant="headline1">Hello UI Kit</Typography>
-    </View>
+    <GestureHandlerRootView>
+      <SafeAreaProvider>
+        <KeyboardProvider>
+          <BottomSheetModalProvider>
+            <StorybookUI />
+          </BottomSheetModalProvider>
+        </KeyboardProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
