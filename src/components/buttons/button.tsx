@@ -158,6 +158,7 @@ const styles = StyleSheet.create((theme) => ({
     flexBasis: 'auto',
     flexGrow: 0,
     flexShrink: 1,
+    textAlign: 'center',
   },
   loader: {
     ...StyleSheet.absoluteFillObject,
