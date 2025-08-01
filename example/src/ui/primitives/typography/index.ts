@@ -1,1 +1,1 @@
-export { Typography, type TypographyProps } from './typography'
+export { Typography, type TypographyProps } from './typography';

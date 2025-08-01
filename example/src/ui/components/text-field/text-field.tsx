@@ -1,35 +1,35 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react'
-import { View } from 'react-native'
+import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { View } from 'react-native';
 
 import {
   IconButton,
   TextField as TextFieldBase,
   type TextFieldProps as TextFieldBaseProps,
-} from '@kode-frontend/uikit-rn/components'
+} from '@kode-frontend/uikit-rn/components';
 import {
   CollapseTransition,
   FadeTransition,
   type TextInputRef,
-} from '@kode-frontend/uikit-rn/primitives'
-import { StyleSheet } from 'react-native-unistyles'
+} from '@kode-frontend/uikit-rn/primitives';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { AlertHexagon, Delete } from '../../icons'
+import { AlertHexagon, Delete } from '../../icons';
 
 export type TextFieldProps = TextFieldBaseProps & {
-  withClean?: boolean
-}
+  withClean?: boolean;
+};
 export const TextField = forwardRef<TextInputRef, TextFieldProps>(
   ({ trailingAddon, withClean = false, ...rest }, ref) => {
-    const inputRef = useRef<TextInputRef>(null)
+    const inputRef = useRef<TextInputRef>(null);
 
-    const showCleanButton = withClean && !rest.disabled && Boolean(rest.value)
+    const showCleanButton = withClean && !rest.disabled && Boolean(rest.value);
 
     const handleClean = () => {
-      rest.onChangeText?.('')
-      inputRef.current?.focus()
-    }
+      rest.onChangeText?.('');
+      inputRef.current?.focus();
+    };
 
-    useImperativeHandle(ref, () => inputRef.current!)
+    useImperativeHandle(ref, () => inputRef.current!);
 
     return (
       <TextFieldBase
@@ -37,11 +37,11 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
         {...rest}
         trailingAddon={
           <View style={styles.trailingAddon}>
-            <FadeTransition show={showCleanButton} unmountWhenFade='full'>
+            <FadeTransition show={showCleanButton} unmountWhenFade="full">
               <IconButton
-                size='medium'
+                size="medium"
                 style={styles.cleanButton}
-                variant='ghostNeutral'
+                variant="ghostNeutral"
                 onPress={handleClean}
               >
                 <Delete size={24} />
@@ -53,16 +53,16 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
             <CollapseTransition
               horizontal
               collapsed={!rest.error}
-              unmountWhenFade='full'
+              unmountWhenFade="full"
             >
-              <AlertHexagon color='iconNegative' size={24} />
+              <AlertHexagon color="iconNegative" size={24} />
             </CollapseTransition>
           </View>
         }
       />
-    )
-  },
-)
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   cleanButton: {
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 8,
   },
-})
+});

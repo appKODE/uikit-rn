@@ -6,6 +6,6 @@ export {
   BottomSheetScrollView,
   BottomSheetSectionList,
   BottomSheetView,
-} from './bottom-sheet'
+} from './bottom-sheet';
 
-export { Page, type PageProps } from './page'
+export { Page, type PageProps } from './page';
