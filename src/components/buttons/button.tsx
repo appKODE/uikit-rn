@@ -17,9 +17,9 @@ import {
   Typography,
 } from '../../primitives';
 import { type IconProps } from '../../types';
-import { getBackgroundColor } from './lib/get-background-color';
-import { getIconColor } from './lib/get-icon-color';
-import { getTextColor } from './lib/get-text-color';
+import { getBackgroundColor } from './utils/get-background-color';
+import { getIconColor } from './utils/get-icon-color';
+import { getTextColor } from './utils/get-text-color';
 import { type ButtonSize, type ButtonVariant } from './types';
 
 export type ButtonProps = TouchableProps & {

@@ -5,9 +5,9 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import { type TextInputProps, Typography } from '../../primitives';
 import { FormField, type FormFieldProps } from './form-field';
-import { getFieldState } from './lib/get-field-state';
-import { getFieldTextColor } from './lib/get-field-text-color';
-import { getFieldVariant } from './lib/get-field-variant';
+import { getFieldState } from './utils/get-field-state';
+import { getFieldTextColor } from './utils/get-field-text-color';
+import { getFieldVariant } from './utils/get-field-variant';
 
 type InputProps = Pick<
   TextInputProps,
