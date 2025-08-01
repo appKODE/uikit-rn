@@ -13,9 +13,9 @@ import {
   Typography,
 } from '../../primitives';
 import { FormField, type FormFieldProps } from './form-field';
-import { getFieldCounterColor } from './lib/get-field-counter-color';
-import { getFieldState } from './lib/get-field-state';
-import { getFieldVariant } from './lib/get-field-variant';
+import { getFieldCounterColor } from './utils/get-field-counter-color';
+import { getFieldState } from './utils/get-field-state';
+import { getFieldVariant } from './utils/get-field-variant';
 
 export type TextFieldProps = TextInputProps &
   Omit<FormFieldProps, 'children' | 'state' | 'variant'> & {

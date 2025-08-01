@@ -1,14 +1,14 @@
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react';
 
-import React, { useState } from 'react'
-import { ScrollView, StyleSheet } from 'react-native'
+import { useState } from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
 
-import { Button } from '@kode-frontend/uikit-rn/components'
-import { Typography } from '@kode-frontend/uikit-rn/primitives'
+import { Button } from '@kode-frontend/uikit-rn/components';
+import { Typography } from '@kode-frontend/uikit-rn/primitives';
 
-import { PlaceholderIcon } from '../../icons'
+import { PlaceholderIcon } from '../../icons';
 
-import { TextField } from './text-field'
+import { TextField } from './text-field';
 
 const TextFieldMeta: Meta<typeof TextField> = {
   args: {
@@ -16,21 +16,21 @@ const TextFieldMeta: Meta<typeof TextField> = {
   },
   component: TextField,
   title: 'ui/components',
-}
+};
 
-export default TextFieldMeta
+export default TextFieldMeta;
 
-type Story = StoryFn<typeof TextField>
+type Story = StoryFn<typeof TextField>;
 
-export const TextFieldStory: Story = args => {
-  const [value, setValue] = useState('Value')
-  const [error, setError] = useState('')
+export const TextFieldStory: Story = (args) => {
+  const [value, setValue] = useState('Value');
+  const [error, setError] = useState('');
 
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
-      <Typography variant='headline1'>Текстовое поле</Typography>
+      <Typography variant="headline1">Текстовое поле</Typography>
 
-      <Typography color='textQuaternary' variant='body1'>
+      <Typography color="textQuaternary" variant="body1">
         Простое текстовое поле ввода
       </Typography>
 
@@ -38,25 +38,25 @@ export const TextFieldStory: Story = args => {
 
       <TextField
         {...args}
-        label='Label'
+        label="Label"
         value={value}
         onChangeText={setValue}
       />
 
       <TextField
         {...args}
-        helperText='Поддерживает Helper Text'
-        label='Label'
+        helperText="Поддерживает Helper Text"
+        label="Label"
         value={value}
         onChangeText={setValue}
       />
 
       <TextField
         {...args}
-        helperText='Поддерживает левый и правый Addon'
-        label='Label'
-        leadingAddon={<PlaceholderIcon color='iconTertiary' />}
-        trailingAddon={<PlaceholderIcon color='iconTertiary' />}
+        helperText="Поддерживает левый и правый Addon"
+        label="Label"
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
         value={value}
         onChangeText={setValue}
       />
@@ -64,11 +64,11 @@ export const TextFieldStory: Story = args => {
       <TextField
         {...args}
         withClean
-        helperText='С кнопкой очистки'
-        label='Label'
-        leadingAddon={<PlaceholderIcon color='iconTertiary' />}
+        helperText="С кнопкой очистки"
+        label="Label"
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
         maxLength={100}
-        trailingAddon={<PlaceholderIcon color='iconTertiary' />}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
         value={value}
         onChangeText={setValue}
       />
@@ -77,11 +77,11 @@ export const TextFieldStory: Story = args => {
         {...args}
         disabled
         withClean
-        helperText='Disabled field'
-        label='Label'
-        leadingAddon={<PlaceholderIcon color='iconTertiary' />}
+        helperText="Disabled field"
+        label="Label"
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
         maxLength={100}
-        trailingAddon={<PlaceholderIcon color='iconTertiary' />}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
         value={value}
         onChangeText={setValue}
       />
@@ -90,24 +90,24 @@ export const TextFieldStory: Story = args => {
         {...args}
         withClean
         error={error}
-        label='Label'
-        leadingAddon={<PlaceholderIcon color='iconTertiary' />}
-        trailingAddon={<PlaceholderIcon color='iconTertiary' />}
+        label="Label"
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
         value={value}
         onChangeText={setValue}
       />
 
       <Button
         onPress={() => {
-          setError(error ? '' : 'Error message')
+          setError(error ? '' : 'Error message');
         }}
       >
         {error ? 'Скрыть ошибку' : 'Показать ошибку'}
       </Button>
     </ScrollView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   contentContainer: { gap: 16, padding: 16 },
-})
+});
