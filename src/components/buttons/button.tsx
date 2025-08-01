@@ -1,5 +1,5 @@
 import { type ComponentType, type ReactElement } from 'react';
-import { type StyleProp, type ViewStyle } from 'react-native';
+import { type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 
 import Animated from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
@@ -16,7 +16,7 @@ import {
   type TouchableProps,
   Typography,
 } from '../../primitives';
-import { type IconProps } from '../../types';
+import { type IconProps, type TypographyVariants } from '../../types';
 import { getBackgroundColor } from './utils/get-background-color';
 import { getIconColor } from './utils/get-icon-color';
 import { getTextColor } from './utils/get-text-color';
@@ -32,6 +32,8 @@ export type ButtonProps = TouchableProps & {
   style?: StyleProp<ViewStyle>;
   trailingAddon?: ComponentType<IconProps> | ReactElement<IconProps> | null;
   variant?: ButtonVariant;
+  textVariant?: TypographyVariants;
+  textStyle?: StyleProp<TextStyle>;
 };
 
 export const Button = ({
@@ -45,6 +47,8 @@ export const Button = ({
   trailingAddon,
   variant = 'primaryAccent',
   onPress,
+  textVariant = 'subhead1',
+  textStyle,
   ...rest
 }: ButtonProps) => {
   styles.useVariants({
@@ -91,8 +95,8 @@ export const Button = ({
           <Typography
             color={textColor}
             numberOfLines={nowrap ? 1 : undefined}
-            style={styles.label}
-            variant="subhead1"
+            style={[styles.label, textStyle]}
+            variant={textVariant}
           >
             {children}
           </Typography>
@@ -154,7 +158,6 @@ const styles = StyleSheet.create((theme) => ({
     flexBasis: 'auto',
     flexGrow: 0,
     flexShrink: 1,
-    textAlign: 'center',
   },
   loader: {
     ...StyleSheet.absoluteFillObject,
