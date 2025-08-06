@@ -22,6 +22,7 @@ module.exports = function (api) {
         'react-native-unistyles/plugin',
         {
           root: 'src',
+          autoProcessPaths: ['@kode-frontend/uikit-rn'],
         },
       ],
       'react-native-worklets/plugin',
