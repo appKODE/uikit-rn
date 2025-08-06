@@ -140,6 +140,7 @@ const styles = StyleSheet.create(theme => ({
   - Divider
   - Cell
   - Checkbox
+  - [Snackbar](./docs/components/snackbar.md)
 - *layouts*
   - *bottom-sheet*
     - BottomSheet
