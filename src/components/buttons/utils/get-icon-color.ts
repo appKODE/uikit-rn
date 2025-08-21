@@ -1,4 +1,4 @@
-import { type ButtonVariant } from '../types';
+import { type ButtonVariant, type DefaultButtonVariant } from '../types';
 import type { IconColorFullKeys } from '../../../types';
 
 type Params = {
@@ -10,7 +10,13 @@ export const getIconColor = ({
   disabled,
   variant,
 }: Params): IconColorFullKeys => {
-  return mapVariants[variant]({ disabled });
+  if (typeof variant === 'string') {
+    return mapVariants[variant]({ disabled });
+  }
+
+  const disabledIconColor = variant.disabledIconColor ?? variant.iconColor;
+
+  return disabled ? disabledIconColor : variant.iconColor;
 };
 
 type MapperParams = {
@@ -18,7 +24,7 @@ type MapperParams = {
 };
 
 const mapVariants: Record<
-  ButtonVariant,
+  DefaultButtonVariant,
   (params: MapperParams) => IconColorFullKeys
 > = {
   ghostAccent: ({ disabled }) => {

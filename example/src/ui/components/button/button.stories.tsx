@@ -133,6 +133,44 @@ export const ButtonStory: Story = (args) => (
     </View>
 
     <View style={styles.group}>
+      <Typography>Custom</Typography>
+      <Button
+        {...args}
+        variant={{
+          backgroundColor: 'red',
+          color: 'textContrastPrimary',
+          iconColor: 'iconContrastPrimary',
+        }}
+      >
+        Rest
+      </Button>
+      <Button
+        {...args}
+        disabled
+        variant={{
+          backgroundColor: 'red',
+          color: 'textOnAccent',
+          iconColor: 'iconOnAccent',
+          disabledColor: 'textOnAccentDisabled',
+          disabledIconColor: 'iconOnAccentDisabled',
+        }}
+      >
+        disabled
+      </Button>
+      <Button
+        {...args}
+        loading
+        variant={{
+          backgroundColor: 'red',
+          color: 'textContrastPrimary',
+          iconColor: 'iconContrastPrimary',
+        }}
+      >
+        Loading
+      </Button>
+    </View>
+
+    <View style={styles.group}>
       <Typography>Поддерживает асинхронный onPress</Typography>
       <Button
         {...args}
