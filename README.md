@@ -1,4 +1,4 @@
-# 💅 KODE UI kit 
+# 💅 KODE UI kit
 
 React Native имплементация [UI-кита](https://www.figma.com/design/lAtx3eLh9DZcY8QJhnyavC/KODE-UI) от компании [KODE](https://kode.ru)
 
@@ -33,7 +33,7 @@ module.exports = function (api) {
   return {
     ...
     plugins: [
-      ... // any plugins 
+      ... // any plugins
       [
         'react-native-unistyles/plugin',
         {
@@ -151,6 +151,9 @@ const styles = StyleSheet.create(theme => ({
   - *page*
     - Page
     - PageFooter
+  - *page-list*
+    - PageList
+    - PageListFooter
 - *hooks*
   - useTheme
 - *lib*
