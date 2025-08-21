@@ -18,7 +18,12 @@ export type PageListProps<T> = FlatListProps<T> & {
 };
 
 const PageListInner = <T,>(
-  { contentContainerStyle, footer, ...rest }: PageListProps<T>,
+  {
+    ListFooterComponent,
+    contentContainerStyle,
+    footer,
+    ...rest
+  }: PageListProps<T>,
   ref: ForwardedRef<FlatList<T>>
 ) => {
   const insets = useSafeAreaInsets();
@@ -33,7 +38,12 @@ const PageListInner = <T,>(
       <FlatList
         ref={ref}
         {...rest}
-        ListFooterComponent={<Animated.View style={footerGapStyle} />}
+        ListFooterComponent={
+          <>
+            {ListFooterComponent}
+            <Animated.View style={footerGapStyle} />
+          </>
+        }
         contentContainerStyle={[
           styles.content(footer ? undefined : insets.bottom),
           contentContainerStyle,
