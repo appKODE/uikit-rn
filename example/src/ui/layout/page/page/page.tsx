@@ -6,7 +6,7 @@ import {
   type PageProps as PageBaseProps,
 } from '@kode-frontend/uikit-rn/layouts';
 
-import { PageHeader, type PageHeaderProps } from './page-header';
+import { PageHeader, type PageHeaderProps } from '../page-header';
 
 export type PageProps = PageBaseProps & PageHeaderProps;
 

@@ -8,4 +8,11 @@ export {
 
 export type { BottomSheetProps, BottomSheetRef } from './bottom-sheet';
 
-export { Page, PageFooter, type PageFooterProps, type PageProps } from './page';
+export {
+  Page,
+  type PageProps,
+  PageFooter,
+  type PageFooterProps,
+  PageList,
+  type PageListProps,
+} from './page';

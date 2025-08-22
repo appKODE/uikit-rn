@@ -1,2 +1,1 @@
-export { Page, type PageProps } from './page';
 export { PageList, type PageListProps } from './page-list';
