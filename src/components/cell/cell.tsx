@@ -7,7 +7,7 @@ import type { IconProps } from '../../types';
 
 import { renderWithProps } from '../../utils';
 import { Touchable } from '../../primitives';
-import { Divider } from '../divider';
+import { Divider, type DividerProps } from '../divider';
 
 type ContainerStyleParams = {
   gap?: number;
@@ -15,7 +15,10 @@ type ContainerStyleParams = {
   paddingVertical?: number;
 };
 
-export type CellProps = ViewProps &
+const DEFAULT_PADDING_HORIZONTAL = 16;
+
+export type CellProps = Pick<DividerProps, 'leftOffset'> &
+  ViewProps &
   ContainerStyleParams & {
     disabled?: boolean;
     divider?: boolean;
@@ -30,9 +33,11 @@ export const Cell = ({
   divider = true,
   gap,
   leadingContent,
+  leftOffset = DEFAULT_PADDING_HORIZONTAL,
   paddingHorizontal,
   paddingVertical,
   rightIcon,
+  style,
   trailingContent,
   onPress,
   ...rest
@@ -49,13 +54,13 @@ export const Cell = ({
       style={styles.disabled(disabled)}
       onPress={onPress}
     >
-      <View style={containerStyles} {...rest}>
+      <View style={[containerStyles, style]} {...rest}>
         {leadingContent}
         {trailingContent}
         {renderWithProps(rightIcon)}
       </View>
 
-      {divider ? <Divider /> : null}
+      {divider ? <Divider leftOffset={leftOffset} /> : null}
     </Touchable>
   );
 };
@@ -63,7 +68,7 @@ export const Cell = ({
 const styles = StyleSheet.create({
   container: ({
     gap = 12,
-    paddingHorizontal = 16,
+    paddingHorizontal = DEFAULT_PADDING_HORIZONTAL,
     paddingVertical = 12,
   }: ContainerStyleParams) => ({
     alignItems: 'center',

@@ -27,6 +27,7 @@ export const Typography = ({
 
 const styles = StyleSheet.create((theme) => ({
   typography: (variant: TypographyVariants, color: TypographyColorKeys) => ({
+    flexShrink: 1,
     color: theme.palette.all[color],
     ...theme.typography[variant],
   }),
