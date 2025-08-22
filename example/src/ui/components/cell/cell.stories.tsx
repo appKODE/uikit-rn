@@ -145,6 +145,15 @@ export const CellStory: Story = (args) => (
         onPress={fn}
       />
     </View>
+
+    <View>
+      <Typography>Оффсет для Divider'а</Typography>
+      <Cell
+        {...args}
+        leftOffset={52}
+        leadingContent={<Typography>leadingContent</Typography>}
+      />
+    </View>
   </ScrollView>
 );
 
