@@ -8,4 +8,4 @@ export {
   BottomSheetView,
 } from './bottom-sheet';
 
-export { Page, type PageProps } from './page';
+export { Page, type PageProps, PageList, type PageListProps } from './page';

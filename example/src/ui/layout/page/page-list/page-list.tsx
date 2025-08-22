@@ -3,15 +3,15 @@ import {
   type PageListProps as PageListBaseProps,
 } from '@kode-frontend/uikit-rn/layouts';
 
-import { PageHeader, type PageHeaderProps } from './page-header';
+import { PageHeader, type PageHeaderProps } from '../page-header';
 import { StyleSheet } from 'react-native-unistyles';
 import { type ForwardedRef, forwardRef, type ReactElement } from 'react';
 import type { FlatList } from 'react-native';
 
-export type PageProps<T> = PageListBaseProps<T> & PageHeaderProps;
+export type PageListProps<T> = PageListBaseProps<T> & PageHeaderProps;
 
 const PageListInner = <T extends any>(
-  { subtitle, title, ...rest }: PageProps<T>,
+  { subtitle, title, ...rest }: PageListProps<T>,
   ref: ForwardedRef<FlatList<T>>
 ) => {
   return (
@@ -25,7 +25,7 @@ const PageListInner = <T extends any>(
 };
 
 export const PageList = forwardRef(PageListInner) as <T>(
-  props: PageProps<T> & { ref?: ForwardedRef<FlatList<T>> }
+  props: PageListProps<T> & { ref?: ForwardedRef<FlatList<T>> }
 ) => ReactElement;
 
 const styles = StyleSheet.create({

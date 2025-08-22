@@ -2,12 +2,12 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { useCallback, useRef } from 'react';
 
-import { Button } from '../../components';
-import { Typography } from '../../primitives';
+import { Button } from '../../../components';
+import { Typography } from '../../../primitives';
 import { PageList } from './page-list';
 import { StyleSheet } from 'react-native-unistyles';
 import { type FlatList, type ListRenderItem, View } from 'react-native';
-import { PageListFooter } from './page-list-footer';
+import { PageFooter } from '../page-footer';
 
 type TItem = {
   id: string;
@@ -68,7 +68,7 @@ export const PageListStory: Story = (args) => {
       {...args}
       ref={listRef}
       footer={
-        <PageListFooter>
+        <PageFooter>
           <Button
             nowrap
             onPress={() => {
@@ -77,7 +77,7 @@ export const PageListStory: Story = (args) => {
           >
             listRef.current?.scrollToEnd()
           </Button>
-        </PageListFooter>
+        </PageFooter>
       }
       keyExtractor={keyExtractor}
       renderItem={renderItem}

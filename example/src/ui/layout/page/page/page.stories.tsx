@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { PageFooter } from '@kode-frontend/uikit-rn/layouts';
 
-import { Button, TextField } from '../../components';
-import { Typography } from '../../primitives';
+import { Button, TextField } from '../../../components';
+import { Typography } from '../../../primitives';
 import { Page } from './page';
 
 const PageMeta: Meta<typeof Page> = {
