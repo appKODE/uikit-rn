@@ -31,6 +31,25 @@ export type ButtonProps = TouchableProps & {
   size?: ButtonSize;
   style?: StyleProp<ViewStyle>;
   trailingAddon?: ComponentType<IconProps> | ReactElement<IconProps> | null;
+  /**
+   * Вариант визуального отображения кнопки.
+   *
+   * Используется для выбора предопределённого стиля компонента.
+   * Например: 'primaryAccent', 'ghostNegative', 'secondaryAccent'.
+   *
+   * Если дефолтных вариантов недостаточно, на проекте нужен свой кастомный вариант, то можно прокинуть свои кастомные цвета.
+   *
+   * @example
+   * <Button variant="primaryAccent" />
+   * <Button variant={{
+          backgroundColor: 'transparent',
+          disabledIconColor: 'iconNegativeDisabled',
+          iconColor: 'iconNegative',
+          color: 'textOnNegative',
+          disabledColor: 'textOnNegativeDisabled',
+          disabledBackgroundColor: 'transparent',
+      }} />
+   */
   variant?: ButtonVariant;
 };
 

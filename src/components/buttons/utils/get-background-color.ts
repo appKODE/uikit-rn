@@ -1,4 +1,4 @@
-import { type ButtonVariant } from '../types';
+import { type ButtonVariant, type DefaultButtonVariant } from '../types';
 import type { DefaultTheme } from '../../../types';
 
 type Params = {
@@ -12,7 +12,14 @@ export const getBackgroundColor = ({
   theme,
   variant,
 }: Params): string => {
-  return mapVariants(theme)[variant]({ disabled });
+  if (typeof variant === 'string') {
+    return mapVariants(theme)[variant]({ disabled });
+  }
+
+  const disabledBackgroundColor =
+    variant.disabledBackgroundColor ?? variant.backgroundColor;
+
+  return disabled ? disabledBackgroundColor : variant.backgroundColor;
 };
 
 type MapperParams = {
@@ -21,7 +28,7 @@ type MapperParams = {
 
 const mapVariants = (
   theme: DefaultTheme
-): Record<ButtonVariant, (params: MapperParams) => string> => {
+): Record<DefaultButtonVariant, (params: MapperParams) => string> => {
   const { interactive, surface } = theme.palette;
   return {
     ghostAccent: ({}) => {
