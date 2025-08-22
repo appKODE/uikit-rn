@@ -150,10 +150,8 @@ const styles = StyleSheet.create(theme => ({
     - BottomSheetView
   - *page*
     - Page
-    - PageFooter
-  - *page-list*
     - PageList
-    - PageListFooter
+    - PageFooter
 - *hooks*
   - useTheme
 - *lib*
