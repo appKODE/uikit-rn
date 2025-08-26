@@ -1,15 +1,11 @@
 import { type ComponentType, type ReactElement } from 'react';
 import { type StyleProp, type ViewStyle } from 'react-native';
 
-import Animated from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { useAsyncAction, useTheme } from '../../hooks';
 import { renderWithProps } from '../../utils';
 import {
-  ActivityIndicator,
-  DEFAULT_MOUNT_KEYFRAME,
-  DEFAULT_UNMOUNT_KEYFRAME,
   FadeTransition,
   LIGHT_SCALE_INTERPOLATOR,
   Touchable,
@@ -21,6 +17,7 @@ import { getBackgroundColor } from './utils/get-background-color';
 import { getIconColor } from './utils/get-icon-color';
 import { getTextColor } from './utils/get-text-color';
 import { type ButtonSize, type ButtonVariant } from './types';
+import { ButtonLoader } from './button-loader';
 
 export type ButtonProps = TouchableProps & {
   children: ComponentType<IconProps> | ReactElement<IconProps> | string;
@@ -122,15 +119,7 @@ export const Button = ({
         {renderWithProps(trailingAddon, { color: iconColor })}
       </FadeTransition>
 
-      {isLoading ? (
-        <Animated.View
-          entering={DEFAULT_MOUNT_KEYFRAME}
-          exiting={DEFAULT_UNMOUNT_KEYFRAME}
-          style={styles.loader}
-        >
-          <ActivityIndicator color={iconColor} />
-        </Animated.View>
-      ) : null}
+      <ButtonLoader iconColor={iconColor} isLoading={isLoading} />
     </Touchable>
   );
 };
@@ -174,10 +163,5 @@ const styles = StyleSheet.create((theme) => ({
     flexGrow: 0,
     flexShrink: 1,
     textAlign: 'center',
-  },
-  loader: {
-    ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 }));
