@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
+
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { DEFAULT_DURATION } from '../../primitives/transitions';
-import { ActivityIndicator } from '../../primitives/activity-indicator';
-import type { IconColorFullKeys } from '../../types';
 import { StyleSheet } from 'react-native-unistyles';
+
+import { ActivityIndicator, DEFAULT_DURATION } from '../../primitives';
+import type { IconColorFullKeys } from '../../types';
 
 type Props = {
   iconColor: IconColorFullKeys;
