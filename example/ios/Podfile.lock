@@ -2052,7 +2052,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - SocketRocket (0.7.1)
-  - UikitRn (0.2.2):
+  - UikitRn (0.5.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2433,7 +2433,7 @@ SPEC CHECKSUMS:
   RNSVG: 8a1054afe490b5d63b9792d7ae3c1fde8c05cdd0
   RNWorklets: b6ab2d5d0cd8f7d373d037de6bf8862e4726cf45
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  UikitRn: cbc789a59dce7353beddeb53baa04a25ed1c9f6f
+  UikitRn: f30f2ceefc6a99cdd85fbaa516ff51f4a50cf247
   Unistyles: bc5db58d33d165fb55c76e9f350b4b672ba2e4d5
   Yoga: c758bfb934100bb4bf9cbaccb52557cee35e8bdf
 

@@ -43,6 +43,7 @@ export const Checkbox = ({
   const iconColor = getIconColor({
     type,
     isError,
+    isDisabled: disabled,
   });
 
   const rippleColor = theme.palette.all[iconColor];
