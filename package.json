@@ -1,6 +1,6 @@
 {
   "name": "@kode-frontend/uikit-rn",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "React Native implementation of KODE UI kit",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
