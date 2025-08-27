@@ -53,7 +53,11 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
-    "release": "release-it --only-version"
+    "release": "release-it --only-version",
+    "bootstrap": "yarn && cd example/ios && pod install && cd ../..",
+    "start": "yarn example start",
+    "ios": "yarn example ios",
+    "android": "yarn example android"
   },
   "keywords": [
     "react-native",

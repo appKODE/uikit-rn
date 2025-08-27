@@ -1,19 +1,56 @@
-import { type IconColorKeys } from '../../../types';
+import { type IconColorFullKeys } from '../../../types';
 import { type CheckboxType } from '../types';
 
 type Props = {
   type: CheckboxType;
   isError?: boolean;
+  isDisabled?: boolean;
 };
 
-export const getIconColor = ({ type, isError }: Props): IconColorKeys => {
+type TMapColorsOutput = {
+  defaultColor: IconColorFullKeys;
+  errorColor: IconColorFullKeys;
+  defaultDisabledColor: IconColorFullKeys;
+  errorDisabledColor: IconColorFullKeys;
+};
+
+const fulfilledIconColors: TMapColorsOutput = {
+  defaultColor: 'iconAccent',
+  errorColor: 'iconNegative',
+  defaultDisabledColor: 'iconAccentDisabled',
+  errorDisabledColor: 'iconNegativeDisabled',
+};
+
+const mapColorsByType: Record<CheckboxType, TMapColorsOutput> = {
+  indeterminate: fulfilledIconColors,
+  selected: fulfilledIconColors,
+  unselected: {
+    defaultColor: 'iconTertiary',
+    errorColor: 'iconNegative',
+    defaultDisabledColor: 'iconDisabled',
+    errorDisabledColor: 'iconNegativeDisabled',
+  },
+};
+
+export const getIconColor = ({
+  type,
+  isError,
+  isDisabled,
+}: Props): IconColorFullKeys => {
+  const { errorColor, errorDisabledColor, defaultDisabledColor, defaultColor } =
+    mapColorsByType[type];
+
+  if (isError && isDisabled) {
+    return errorDisabledColor;
+  }
+
   if (isError) {
-    return 'iconNegative';
+    return errorColor;
   }
 
-  if (type === 'unselected') {
-    return 'iconTertiary';
+  if (isDisabled) {
+    return defaultDisabledColor;
   }
 
-  return 'iconAccent';
+  return defaultColor;
 };
