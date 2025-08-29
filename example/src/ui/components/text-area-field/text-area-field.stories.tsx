@@ -48,6 +48,7 @@ export const TextAreaFieldStory: Story = (args) => {
         error={error}
         helperText={'Helper Text'}
         label={'Поддерживает Helper Text'}
+        counterMaxLength={100}
         maxLength={100}
         value={value}
         onChangeText={setValue}
@@ -58,6 +59,7 @@ export const TextAreaFieldStory: Story = (args) => {
         disabled
         helperText={'Helper Text'}
         label={'Disabled'}
+        counterMaxLength={100}
         maxLength={100}
         value={value}
         onChangeText={setValue}

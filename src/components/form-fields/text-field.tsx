@@ -21,6 +21,7 @@ export type TextFieldProps = TextInputProps &
   Omit<FormFieldProps, 'children' | 'state' | 'variant'> & {
     disabled?: boolean;
     error?: string;
+    counterMaxLength?: number;
   };
 
 export const TextField = forwardRef<TextInputRef, TextFieldProps>(
@@ -31,6 +32,7 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
       fieldContainerStyle,
       fieldHeight,
       helperText,
+      counterMaxLength,
       label,
       labelColor,
       labelVariant,
@@ -78,18 +80,18 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
 
     const counterColor = getFieldCounterColor({
       disabled,
-      maxLength: rest.maxLength,
+      maxLength: counterMaxLength,
       valueLength,
     });
 
     return (
       <FormField
         counterSlot={
-          rest.maxLength ? (
+          counterMaxLength ? (
             <Typography
               color={counterColor}
               variant={'caption1'}
-            >{`${valueLength}/${rest.maxLength}`}</Typography>
+            >{`${valueLength}/${counterMaxLength}`}</Typography>
           ) : undefined
         }
         fieldContainerStyle={fieldContainerStyle}

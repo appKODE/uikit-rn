@@ -7,10 +7,16 @@ import { TextField } from './text-field';
 export type TextAreaFieldProps = TextInputProps &
   Omit<
     FormFieldProps,
-    'fieldHeight' | 'leadingAddon' | 'state' | 'trailingAddon' | 'variant'
+    | 'fieldHeight'
+    | 'leadingAddon'
+    | 'state'
+    | 'trailingAddon'
+    | 'variant'
+    | 'children'
   > & {
     disabled?: boolean;
     error?: string;
+    counterMaxLength?: number;
   };
 
 export const TextAreaField = forwardRef<TextInputRef, TextAreaFieldProps>(
