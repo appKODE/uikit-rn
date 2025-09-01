@@ -26,6 +26,8 @@ export type CellProps = Pick<DividerProps, 'leftOffset'> &
     rightIcon?: ReactElement<IconProps>;
     trailingContent?: ReactElement;
     onPress?: () => void;
+    delayLongPress?: number;
+    onLongPress?: () => void;
   };
 
 export const Cell = ({
@@ -40,6 +42,8 @@ export const Cell = ({
   style,
   trailingContent,
   onPress,
+  delayLongPress,
+  onLongPress,
   ...rest
 }: CellProps) => {
   const containerStyles = styles.container({
@@ -53,6 +57,8 @@ export const Cell = ({
       disabled={disabled || !onPress}
       style={styles.disabled(disabled)}
       onPress={onPress}
+      onLongPress={onLongPress}
+      delayLongPress={delayLongPress}
     >
       <View style={[containerStyles, style]} {...rest}>
         {leadingContent}
