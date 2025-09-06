@@ -15,4 +15,6 @@ export {
   type PageFooterProps,
   PageList,
   type PageListProps,
+  PageSectionList,
+  type PageSectionListProps,
 } from './page';
