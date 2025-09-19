@@ -9,7 +9,7 @@ import {
 
 import { StyleSheet } from 'react-native-unistyles';
 
-import type { TypographyVariants } from '../../types';
+import type { TypographyColorKeys, TypographyVariants } from '../../types';
 
 import { Typography } from '../../primitives';
 
@@ -40,6 +40,8 @@ type BottomSheetHeaderProps = {
   title?: string;
   /** Выравнивание заголовка (по умолчанию: 'center') */
   titleAlign?: TitleAlignment;
+  /** Вариант цвета для заголовка */
+  titleColor?: TypographyColorKeys;
   /** Кастомные стили для контейнера заголовка */
   titleStyle?: StyleProp<ViewStyle>;
   /** Вариант типографики для заголовка (по умолчанию: 'subhead1') */
@@ -73,6 +75,7 @@ export const BottomSheetHeader = ({
   style,
   title,
   titleAlign = 'center',
+  titleColor,
   titleStyle,
   titleVariant = 'subhead1',
 }: BottomSheetHeaderProps) => {
@@ -200,7 +203,11 @@ export const BottomSheetHeader = ({
       <View style={titleContainerStyle}>
         {title ? (
           <View style={titleWrapperStyle}>
-            <Typography numberOfLines={1} variant={titleVariant}>
+            <Typography
+              color={titleColor}
+              numberOfLines={1}
+              variant={titleVariant}
+            >
               {title}
             </Typography>
           </View>
