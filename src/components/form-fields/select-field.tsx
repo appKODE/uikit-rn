@@ -1,6 +1,12 @@
 import { useCallback, useRef, useState } from 'react';
 import { type GestureResponderEvent, type ListRenderItem } from 'react-native';
 
+import { useReanimatedKeyboardAnimation } from 'react-native-keyboard-controller';
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 
 import {
@@ -39,9 +45,20 @@ export const SelectField = <T,>({
   onSelectItem,
   ...rest
 }: SelectFieldProps<T>) => {
+  const insets = useSafeAreaInsets();
+  const { progress } = useReanimatedKeyboardAnimation();
+
   const [isFocused, setIsFocused] = useState(false);
 
   const bottomSheetRef = useRef<BottomSheetRef>(null);
+
+  const footerAnimatedStyle = useAnimatedStyle(
+    () => ({
+      backgroundColor: 'transparent',
+      height: interpolate(progress.value, [0, 1], [insets.bottom, 0], 'clamp'),
+    }),
+    [insets.bottom]
+  );
 
   const onFieldPress = useCallback(
     (e: GestureResponderEvent) => {
@@ -77,6 +94,7 @@ export const SelectField = <T,>({
     >
       <BottomSheet {...rest} ref={bottomSheetRef} onDismiss={onModalDismiss}>
         <BottomSheetFlatList
+          ListFooterComponent={<Animated.View style={footerAnimatedStyle} />}
           contentContainerStyle={styles.listContainer}
           data={data}
           keyExtractor={(_, index) => index.toString()}
