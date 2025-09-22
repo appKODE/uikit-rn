@@ -1,4 +1,4 @@
-import { type ReactNode, memo, useCallback, useMemo, useState } from 'react';
+import { type ReactNode, memo, useMemo } from 'react';
 import {
   type FlexAlignType,
   type LayoutChangeEvent,
@@ -12,18 +12,14 @@ import { StyleSheet } from 'react-native-unistyles';
 import type { TypographyColorKeys, TypographyVariants } from '../../types';
 
 import { Typography } from '../../primitives';
-
-/**
- * Тип для выравнивания заголовка
- * @default 'center'
- */
-type TitleAlignment = 'center' | 'left' | 'right';
+import { useHeaderLayout } from './hooks/use-header-layout';
+import { type BottomSheetHeaderTitleAlignment } from './types';
 
 // Свойства для бокового контента (кнопки слева/справа от заголовка)
 type SideContentProps = {
   content: () => ReactNode;
   sideLayoutStyle: StyleProp<ViewStyle>;
-  titleAlign: TitleAlignment;
+  titleAlign: BottomSheetHeaderTitleAlignment;
   isRight: boolean;
   onLayout?: (event: LayoutChangeEvent) => void;
 };
@@ -39,7 +35,7 @@ type BottomSheetHeaderProps = {
   /** Текст заголовка */
   title?: string;
   /** Выравнивание заголовка (по умолчанию: 'center') */
-  titleAlign?: TitleAlignment;
+  titleAlign?: BottomSheetHeaderTitleAlignment;
   /** Вариант цвета для заголовка */
   titleColor?: TypographyColorKeys;
   /** Кастомные стили для контейнера заголовка */
@@ -79,28 +75,7 @@ export const BottomSheetHeader = ({
   titleStyle,
   titleVariant = 'subhead1',
 }: BottomSheetHeaderProps) => {
-  // Состояние для хранения ширины боковых элементов,
-  // используется для выравнивания заголовка по центру
-  const [contentWidths, setContentWidths] = useState({ left: 0, right: 0 });
-
-  // Обработчик изменения размеров боковых элементов,
-  // обновляет состояние с шириной левой/правой части
-  const handleContentLayout = useCallback(
-    (isRight: boolean): ((event: LayoutChangeEvent) => void) | undefined => {
-      if (titleAlign !== 'center') {
-        return;
-      }
-
-      return (event: LayoutChangeEvent) => {
-        const { width } = event.nativeEvent.layout;
-        setContentWidths((prev) => ({
-          ...prev,
-          [isRight ? 'right' : 'left']: Math.ceil(width),
-        }));
-      };
-    },
-    [titleAlign]
-  );
+  const { contentWidths, handleLayout } = useHeaderLayout(titleAlign);
 
   // Стили для бокового контейнера
   // Ширина вычисляется на основе самой широкой из боковых частей
@@ -108,8 +83,7 @@ export const BottomSheetHeader = ({
     () => ({
       width:
         titleAlign === 'center'
-          ? (Math.max(contentWidths.left, contentWidths.right) as number) ||
-            'auto'
+          ? Math.max(contentWidths.left, contentWidths.right) || 'auto'
           : undefined,
     }),
     [titleAlign, contentWidths.left, contentWidths.right]
@@ -137,68 +111,57 @@ export const BottomSheetHeader = ({
   );
 
   // Рендер псевдо-контента для выравнивания
-  const renderEmptyContent = useCallback(
-    (isRight: boolean) => {
-      if (
-        (isRight && titleAlign === 'right') ||
-        (!isRight && titleAlign === 'left')
-      ) {
-        return null;
-      }
+  const renderEmptyContent = (isRight: boolean) => {
+    if (
+      (isRight && titleAlign === 'right') ||
+      (!isRight && titleAlign === 'left')
+    ) {
+      return null;
+    }
 
-      const oppositeContent = isRight ? renderLeft : renderRight;
+    const oppositeContent = isRight ? renderLeft : renderRight;
 
-      if (!oppositeContent) {
-        return null;
-      }
+    if (!oppositeContent) {
+      return null;
+    }
 
-      return (
-        <View
-          pointerEvents="none"
-          style={[
-            styles.sideContainer,
-            isRight && styles.rightContainer,
-            titleAlign === 'center' && sideLayoutStyle,
-            styles.hidden,
-          ]}
-        >
-          {oppositeContent()}
-        </View>
-      );
-    },
-    [renderLeft, renderRight, titleAlign, sideLayoutStyle]
+    return (
+      <View
+        pointerEvents="none"
+        style={[
+          styles.sideContainer,
+          isRight && styles.rightContainer,
+          titleAlign === 'center' && sideLayoutStyle,
+          styles.hidden,
+        ]}
+      >
+        {oppositeContent()}
+      </View>
+    );
+  };
+
+  const renderSideContent = (content: () => ReactNode, isRight: boolean) => (
+    <SideContent
+      content={content}
+      sideLayoutStyle={sideLayoutStyle}
+      titleAlign={titleAlign}
+      isRight={isRight}
+      onLayout={handleLayout(isRight)}
+    />
   );
 
-  const renderSideContent = useCallback(
-    (content: () => ReactNode, isRight: boolean) => (
-      <SideContent
-        content={content}
-        sideLayoutStyle={sideLayoutStyle}
-        titleAlign={titleAlign}
-        isRight={isRight}
-        onLayout={handleContentLayout(isRight)}
-      />
-    ),
-    [handleContentLayout, sideLayoutStyle, titleAlign]
-  );
-
-  const renderContent = useCallback(
-    ({
-      content,
-      isRight,
-    }: {
-      content: (() => ReactNode) | undefined;
-      isRight: boolean;
-    }) =>
-      content
-        ? renderSideContent(content, isRight)
-        : renderEmptyContent(isRight),
-    [renderSideContent, renderEmptyContent]
-  );
+  const renderContent = (
+    content: (() => ReactNode) | undefined,
+    isRight: boolean
+  ) => {
+    return content
+      ? renderSideContent(content, isRight)
+      : renderEmptyContent(isRight);
+  };
 
   return (
     <View style={[styles.container, style]}>
-      {renderContent({ content: renderLeft, isRight: false })}
+      {renderContent(renderLeft, false)}
 
       <View style={titleContainerStyle}>
         {title ? (
@@ -214,7 +177,7 @@ export const BottomSheetHeader = ({
         ) : null}
       </View>
 
-      {renderContent({ content: renderRight, isRight: true })}
+      {renderContent(renderRight, true)}
     </View>
   );
 };
