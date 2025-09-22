@@ -145,6 +145,7 @@ const styles = StyleSheet.create(theme => ({
   - *bottom-sheet*
     - BottomSheet
     - BottomSheetFlatList
+    - BottomSheetHeader
     - BottomSheetScrollView
     - BottomSheetSectionList
     - BottomSheetView

@@ -3,4 +3,4 @@ export { BottomSheetView } from './bottom-sheet-view';
 export { BottomSheetScrollView } from './bottom-sheet-scroll-view';
 export { BottomSheetFlatList } from './bottom-sheet-flat-list';
 export { BottomSheetSectionList } from './bottom-sheet-section-list';
-export type { BottomSheetRef } from './types';
+export type { BottomSheetRef, BottomSheetHeaderTitleAlignment } from './types';
