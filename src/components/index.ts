@@ -7,6 +7,7 @@ export {
 export {
   SelectField,
   type SelectFieldProps,
+  type SelectFieldRef,
   TextAreaField,
   type TextAreaFieldProps,
   TextField,
