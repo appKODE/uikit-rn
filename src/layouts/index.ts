@@ -4,9 +4,14 @@ export {
   BottomSheetScrollView,
   BottomSheetSectionList,
   BottomSheetView,
+  BottomSheetHeader,
 } from './bottom-sheet';
 
-export type { BottomSheetProps, BottomSheetRef } from './bottom-sheet';
+export type {
+  BottomSheetProps,
+  BottomSheetRef,
+  BottomSheetHeaderTitleAlignment,
+} from './bottom-sheet';
 
 export {
   Page,
