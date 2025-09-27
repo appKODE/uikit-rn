@@ -87,6 +87,8 @@
     "@react-native-community/cli": "15.0.0-alpha.2",
     "@react-native/babel-preset": "0.79.2",
     "@react-native/eslint-config": "^0.78.0",
+    "@react-navigation/bottom-tabs": "^7.4.7",
+    "@react-navigation/native": "^7.1.17",
     "@release-it/conventional-changelog": "^9.0.2",
     "@types/jest": "^29.5.5",
     "@types/react": "^19.0.0",
@@ -103,6 +105,7 @@
     "react-native-keyboard-controller": "^1.18.2",
     "react-native-reanimated": "^4.0.1",
     "react-native-safe-area-context": "^5.5.2",
+    "react-native-screens": "^4.16.0",
     "react-native-unistyles": "^3.0.7",
     "release-it": "^17.10.0",
     "turbo": "^1.10.7",
@@ -110,11 +113,14 @@
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "*",
+    "@react-navigation/bottom-tabs": "*",
+    "@react-navigation/native": "*",
     "react": "*",
     "react-native": "*",
     "react-native-keyboard-controller": "*",
     "react-native-reanimated": "*",
     "react-native-safe-area-context": "*",
+    "react-native-screens": "*",
     "react-native-unistyles": "*"
   },
   "workspaces": [
