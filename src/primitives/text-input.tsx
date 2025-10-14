@@ -30,7 +30,7 @@ export const TextInput = forwardRef<TextInputBase, TextInputProps>(
   (
     {
       placeholderTextColor = 'textQuaternary',
-      selectionColor = 'textAccent',
+      selectionColor,
       style,
       ...props
     },
