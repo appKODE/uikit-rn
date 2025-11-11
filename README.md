@@ -141,6 +141,7 @@ const styles = StyleSheet.create(theme => ({
   - Cell
   - Checkbox
   - [Snackbar](./docs/components/snackbar.md)
+  - [EmptyState](./docs/components/empty-state.md)
 - *layouts*
   - *bottom-sheet*
     - BottomSheet
