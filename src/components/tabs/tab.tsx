@@ -1,9 +1,9 @@
-import { type LayoutChangeEvent, TouchableOpacity, View } from 'react-native';
+import { type LayoutChangeEvent, View } from 'react-native';
 import { getTextColor } from './utils/get-text-color';
 import { type TabProps as TabPropsBase, type TabGroupProps } from './types';
 import { StyleSheet } from 'react-native-unistyles';
 import { renderWithProps } from '../../utils';
-import { Typography } from '../../primitives';
+import { Touchable, Typography } from '../../primitives';
 import { type IconColorKeys } from '../../types';
 
 type TabProps = TabPropsBase &
@@ -29,11 +29,12 @@ export const Tab = ({
   onLayout,
 }: TabProps) => {
   return (
-    <TouchableOpacity
+    <Touchable
       onPress={() => onPress(id)}
       onLayout={onLayout(id)}
-      activeOpacity={0.4}
-      disabled={isDisabled}
+      disabled={isDisabled || isSelected}
+      rippleRadius={height * 0.9}
+      isRippleBorderless
       style={styles.tab(height)}
     >
       {leadingAddon ? (
@@ -63,7 +64,7 @@ export const Tab = ({
       {isSelected ? (
         <View style={styles.indicator(indicatorColor, indicatorHeight)} />
       ) : null}
-    </TouchableOpacity>
+    </Touchable>
   );
 };
 
