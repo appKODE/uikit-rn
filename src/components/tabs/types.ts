@@ -4,6 +4,7 @@ import {
   type IconColorKeys,
   type BorderColorKeys,
 } from '../../types';
+import { type StyleProp, type ViewStyle } from 'react-native';
 
 export type TabProps = {
   id: string;
@@ -12,7 +13,7 @@ export type TabProps = {
   isDisabled?: boolean;
   leadingAddon?: ReactElement;
   trailingAddon?: ReactElement;
-  height?: number;
+  tabStyles?: StyleProp<ViewStyle>;
   textColor?: TypographyColorKeys;
   textDisabledColor?: TypographyColorKeys;
   iconColor?: IconColorKeys;
@@ -20,6 +21,5 @@ export type TabProps = {
 
 export type TabGroupProps = {
   dividerColor?: BorderColorKeys;
-  indicatorColor?: IconColorKeys;
-  indicatorHeight?: number;
+  indicatorStyles?: StyleProp<ViewStyle>;
 };

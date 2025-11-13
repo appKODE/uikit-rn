@@ -7,6 +7,7 @@ import { Typography } from '../../primitives';
 import { Tabs } from './tabs';
 import { useState } from 'react';
 import { PlaceholderIcon } from '../../icons';
+import { useTheme } from '@kode-frontend/uikit-rn';
 
 const TabsMeta: Meta<typeof Tabs> = {
   args: {
@@ -29,6 +30,7 @@ export default TabsMeta;
 type Story = StoryFn<typeof Tabs>;
 
 export const TabsStory: Story = (args) => {
+  const theme = useTheme();
   const [tab, setTab] = useState('tab1');
 
   return (
@@ -79,8 +81,10 @@ export const TabsStory: Story = (args) => {
             leadingAddon: <PlaceholderIcon />,
             trailingAddon: <PlaceholderIcon />,
           }))}
-          indicatorColor="iconNegative"
-          indicatorHeight={8}
+          indicatorStyles={{
+            height: 8,
+            backgroundColor: theme.palette.icon.iconNegative,
+          }}
           activeTab={tab}
           onChange={setTab}
         />

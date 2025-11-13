@@ -4,7 +4,6 @@ import { type TabProps as TabPropsBase, type TabGroupProps } from './types';
 import { StyleSheet } from 'react-native-unistyles';
 import { renderWithProps } from '../../utils';
 import { Touchable, Typography } from '../../primitives';
-import { type IconColorKeys } from '../../types';
 
 type TabProps = TabPropsBase &
   Omit<TabGroupProps, 'dividerColor'> & {
@@ -19,12 +18,11 @@ export const Tab = ({
   trailingAddon,
   labelText,
   isSelected,
-  height = 44,
+  tabStyles,
   textColor = 'textPrimary',
   textDisabledColor = 'textDisabled',
   iconColor = 'iconPrimary',
-  indicatorColor = 'iconAccent',
-  indicatorHeight = 4,
+  indicatorStyles,
   onPress,
   onLayout,
 }: TabProps) => {
@@ -33,9 +31,8 @@ export const Tab = ({
       onPress={() => onPress(id)}
       onLayout={onLayout(id)}
       disabled={isDisabled || isSelected}
-      rippleRadius={height * 0.9}
       isRippleBorderless
-      style={styles.tab(height)}
+      style={[styles.tab, tabStyles]}
     >
       {leadingAddon ? (
         <View style={styles.addon(isDisabled)}>
@@ -61,33 +58,31 @@ export const Tab = ({
         </View>
       ) : null}
 
-      {isSelected ? (
-        <View style={styles.indicator(indicatorColor, indicatorHeight)} />
-      ) : null}
+      {isSelected ? <View style={[styles.indicator, indicatorStyles]} /> : null}
     </Touchable>
   );
 };
 
 const styles = StyleSheet.create((theme) => ({
-  tab: (height: number) => ({
+  tab: {
     paddingHorizontal: 12,
     flexDirection: 'row',
     alignItems: 'center',
     position: 'relative',
     gap: 4,
-    height,
-  }),
+    height: 44,
+  },
   addon: (disabled?: boolean) => ({
     opacity: disabled ? 0.4 : 1,
   }),
-  indicator: (color: IconColorKeys, height: number) => ({
+  indicator: {
     position: 'absolute',
-    height,
-    backgroundColor: theme.palette.all[color],
+    height: 4,
+    backgroundColor: theme.palette.icon.iconAccent,
     left: 8,
     right: 8,
     bottom: 0,
     borderTopRightRadius: 4,
     borderTopLeftRadius: 4,
-  }),
+  },
 }));

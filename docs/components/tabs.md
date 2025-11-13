@@ -9,11 +9,8 @@
 #### dividerColor?: BorderColorKeys
 Цвет нижней обводки (по дефолту прозрачная)
 
-#### indicatorColor?: IconColorKeys
-Цвет подчеркивания активного таба (по дефолту iconAccent)
-
-#### indicatorHeight?: number
-Высота подчеркивания активного таба (по дефолту 4px)
+#### indicatorStyles?: StyleProp<ViewStyle>
+Стили для подчеркивания активного таба (по дефолту цвет iconAccent и высота 4px)
 
 <hr />
 
@@ -34,8 +31,8 @@
 #### trailingAddon?: ReactElement
 Слот для компонента расположенного в конце (например иконка)
 
-#### height?: number
-Высота таба (по дефолту 44px)
+#### tabStyles?: StyleProp<ViewStyle>
+Стили для контейнера таба (по дефолту высота таба 44px)
 
 #### textColor?: TypographyColorKeys
 Цвет лейбла (по дефолту textPrimary)
