@@ -10,8 +10,8 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
+import { useBottomInsets } from '../../hooks';
 
 export type PageSectionListProps<ItemT, SectionT> = SectionListProps<
   ItemT,
@@ -29,7 +29,7 @@ const PageSectionListInner = <ItemT, SectionT>(
   }: PageSectionListProps<ItemT, SectionT>,
   ref: ForwardedRef<SectionList<ItemT, SectionT>>
 ) => {
-  const insets = useSafeAreaInsets();
+  const bottomInsets = useBottomInsets();
   const footerHeight = useSharedValue(0);
 
   const footerGapStyle = useAnimatedStyle(() => ({
@@ -48,14 +48,14 @@ const PageSectionListInner = <ItemT, SectionT>(
           </>
         }
         contentContainerStyle={[
-          styles.content(footer ? undefined : insets.bottom),
+          styles.content(footer ? undefined : bottomInsets),
           contentContainerStyle,
         ]}
       />
 
       {footer ? (
         <View
-          style={styles.footerContainer(insets.bottom)}
+          style={styles.footerContainer}
           onLayout={(e) => (footerHeight.value = e.nativeEvent.layout.height)}
         >
           {footer}
@@ -81,13 +81,12 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.components.page.paddingHorizontal,
     paddingTop: theme.components.page.paddingVertical,
   }),
-  footerContainer: (bottomInset: number) => ({
+  footerContainer: {
     bottom: 0,
     left: 0,
-    paddingBottom: bottomInset,
     position: 'absolute',
     right: 0,
-  }),
+  },
   root: {
     flex: 1,
   },
