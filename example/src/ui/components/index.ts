@@ -5,3 +5,4 @@ export { SelectField, type SelectFieldProps } from './select-field';
 export { Cell, type CellProps } from './cell';
 export { Divider, type DividerProps } from './divider';
 export { IconButton, type IconButtonProps } from './icon-button';
+export { Tabs, Tab, type TabsProps, type TabProps } from './tabs';
