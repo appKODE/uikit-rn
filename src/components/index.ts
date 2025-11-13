@@ -28,3 +28,4 @@ export {
   type SnackAnimationProps,
   SnackAnimations,
 } from './snackbar';
+export { EmptyState, type EmptyStateProps } from './empty-state';
