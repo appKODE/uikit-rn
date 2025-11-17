@@ -18,12 +18,16 @@ React Native имплементация [UI-кита](https://www.figma.com/desi
 - [react-native-bottom-sheet](https://gorhom.dev/react-native-bottom-sheet/)
 - [react-native-keyboard-controller](https://kirillzyusko.github.io/react-native-keyboard-controller/)
 - [react-native-safe-area-context](https://www.npmjs.com/package/react-native-safe-area-context)
+- [@react-navigation/native](https://reactnavigation.org)
+- [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/)
+- [react-native-screens](https://www.npmjs.com/package/react-native-screens)
 
 #### 📥 Установка
 
 - установить все зависимости выше, согласно их документации
 - `yarn add @kode-frontend/uikit-rn`
 - Настроить `react-native-unistyles/plugin` плагин
+
 ```js
 //bebel.config.js
 
@@ -53,33 +57,33 @@ module.exports = function (api) {
 
 #### 🧑‍💻 Использование
 
-1. __Задекларируй темы__
+1. **Задекларируй темы**
 
 ```ts
 //ui-kit.d.ts
 
-import { type DefaultTheme } from '@kode-frontend/uikit-rn'
+import { type DefaultTheme } from '@kode-frontend/uikit-rn';
 
-import 'react-native-unistyles'
+import 'react-native-unistyles';
 
 declare module 'react-native-unistyles' {
   export type AppThemes = {
-    dark: DefaultTheme
-    light: DefaultTheme
-  }
+    dark: DefaultTheme;
+    light: DefaultTheme;
+  };
 
   export interface UnistylesThemes extends AppThemes {}
 }
 ```
 
-2. __Создай темы__
+2. **Создай темы**
 
 ```ts
 const light: DefaultTheme = createTheme(...)
 const dark: DefaultTheme = createTheme(...)
 ```
 
-3. __оберни приложение в контекст UI kit'а__
+3. **оберни приложение в контекст UI kit'а**
 
 ```ts
 // index.js (.ts)
@@ -98,41 +102,43 @@ createThemedApp('your_app_name', () => App, {
 })
 ```
 
-4. __используй компоненты__
+4. **используй компоненты**
+
 ```ts
-import { Typography } from '@kode-frontend/uikit-rn/primitives'
-import { TextField } from '@kode-frontend/uikit-rn/components'
-import { BottomSheet } from '@kode-frontend/uikit-rn/layouts'
+import { Typography } from '@kode-frontend/uikit-rn/primitives';
+import { TextField } from '@kode-frontend/uikit-rn/components';
+import { BottomSheet } from '@kode-frontend/uikit-rn/layouts';
 ```
 
-5. __используй темы со всеми преимуществами [unistyles](https://www.unistyl.es)__
-```ts
-import { StyleSheet } from '@kode-frontend/uikit-rn'
+5. **используй темы со всеми преимуществами [unistyles](https://www.unistyl.es)**
 
-const styles = StyleSheet.create(theme => ({
+```ts
+import { StyleSheet } from '@kode-frontend/uikit-rn';
+
+const styles = StyleSheet.create((theme) => ({
   box: {
-    backgroundColor: theme.palette.surface.background
-  }
-}))
+    backgroundColor: theme.palette.surface.background,
+  },
+}));
 ```
 
 #### 📦 Состав UI kit'а
 
-- *primitives*
+- _primitives_
   - Touchable
   - Typography
   - ActivityIndicator
   - RefreshControl
   - TextInput
-  - *transitions*
+  - _transitions_
     - FadeTransition
     - CollapseTransition
     - SwitchTransition
-- *components*
-  - *buttons*
+- _components_
+  - _buttons_
     - Button
     - IconButton
-  - *form-fields*
+  - _form-fields_
     - FormField
     - TextField
     - TextAreaField
@@ -142,23 +148,25 @@ const styles = StyleSheet.create(theme => ({
   - Checkbox
   - [Snackbar](./docs/components/snackbar.md)
   - [Tabs](./docs/components/tabs.md)
+  - [EmptyState](./docs/components/empty-state.md)
 - *layouts*
   - *bottom-sheet*
+- _layouts_
+  - _bottom-sheet_
     - BottomSheet
     - BottomSheetFlatList
     - BottomSheetHeader
     - BottomSheetScrollView
     - BottomSheetSectionList
     - BottomSheetView
-  - *page*
+  - _page_
     - Page
     - PageList
     - PageFooter
-- *hooks*
+- _hooks_
   - useTheme
-- *lib*
+- _lib_
   - createTheme
-
 
 #### 🚀 Хочу внести свой вклад в развитие, как мне это сделать?
 
