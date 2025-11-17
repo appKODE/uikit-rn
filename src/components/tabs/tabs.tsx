@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { ScrollView, View, type LayoutChangeEvent } from 'react-native';
+import { ScrollView, type LayoutChangeEvent } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { type TabProps, type TabGroupProps } from './types';
 import { Tab } from './tab';
@@ -63,28 +63,30 @@ export const Tabs = ({
     });
   }, [activeTab, tabsLayouts, scrollViewWidth, contentWidth]);
 
+  const renderTab = (tab: TabProps) => {
+    return (
+      <Tab
+        {...tab}
+        {...tabProps}
+        key={tab.id}
+        onPress={onChange}
+        onLayout={handleTabLayout}
+        isSelected={tab.id === activeTab}
+      />
+    );
+  };
+
   return (
-    <View>
-      <ScrollView
-        ref={scrollRef}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        onLayout={handleScrollViewLayout}
-        onContentSizeChange={handleContentSizeChange}
-        contentContainerStyle={styles.scrollContent(dividerColor)}
-      >
-        {tabs.map((tab) => (
-          <Tab
-            {...tab}
-            {...tabProps}
-            key={tab.id}
-            onPress={onChange}
-            onLayout={handleTabLayout}
-            isSelected={tab.id === activeTab}
-          />
-        ))}
-      </ScrollView>
-    </View>
+    <ScrollView
+      ref={scrollRef}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      onLayout={handleScrollViewLayout}
+      onContentSizeChange={handleContentSizeChange}
+      contentContainerStyle={styles.scrollContent(dividerColor)}
+    >
+      {tabs.map(renderTab)}
+    </ScrollView>
   );
 };
 

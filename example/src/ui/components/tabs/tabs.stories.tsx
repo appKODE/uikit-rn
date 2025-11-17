@@ -1,13 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import { Typography } from '../../primitives';
 
 import { Tabs } from './tabs';
 import { useState } from 'react';
 import { PlaceholderIcon } from '../../icons';
-import { useTheme } from '@kode-frontend/uikit-rn';
+import { StyleSheet } from 'react-native-unistyles';
 
 const TabsMeta: Meta<typeof Tabs> = {
   args: {
@@ -30,7 +30,6 @@ export default TabsMeta;
 type Story = StoryFn<typeof Tabs>;
 
 export const TabsStory: Story = (args) => {
-  const theme = useTheme();
   const [tab, setTab] = useState('tab1');
 
   return (
@@ -81,10 +80,7 @@ export const TabsStory: Story = (args) => {
             leadingAddon: <PlaceholderIcon />,
             trailingAddon: <PlaceholderIcon />,
           }))}
-          indicatorStyles={{
-            height: 8,
-            backgroundColor: theme.palette.icon.iconNegative,
-          }}
+          indicatorStyles={styles.indicator}
           activeTab={tab}
           onChange={setTab}
         />
@@ -106,7 +102,7 @@ export const TabsStory: Story = (args) => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
   contentContainer: {
     gap: 32,
     padding: 16,
@@ -114,4 +110,8 @@ const styles = StyleSheet.create({
   group: {
     gap: 16,
   },
-});
+  indicator: {
+    height: 8,
+    backgroundColor: theme.palette.icon.iconNegative,
+  },
+}));
