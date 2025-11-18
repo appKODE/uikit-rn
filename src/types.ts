@@ -132,6 +132,11 @@ export type DefaultTheme = {
       iconSize: number;
       rippleRadius: number;
     };
+    radio: {
+      hitSlop: number;
+      iconSize: number;
+      rippleRadius: number;
+    };
     page: {
       paddingHorizontal: number;
       paddingVertical: number;

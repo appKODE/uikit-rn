@@ -28,3 +28,4 @@ export {
   type SnackAnimationProps,
   SnackAnimations,
 } from './snackbar';
+export { Radio, type RadioProps } from './radio';
