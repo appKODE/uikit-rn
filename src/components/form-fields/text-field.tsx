@@ -112,7 +112,6 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
           color={disabled ? 'textDisabled' : 'textPrimary'}
           editable={!disabled}
           ref={inputRef}
-          selectionColor={'textAccent'}
           onBlur={handleBlur}
           onChangeText={onChangeText}
           onFocus={handleFocus}
