@@ -29,3 +29,4 @@ export {
   SnackAnimations,
 } from './snackbar';
 export { Radio, type RadioProps } from './radio';
+export { EmptyState, type EmptyStateProps } from './empty-state';
