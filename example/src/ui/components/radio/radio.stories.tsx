@@ -7,6 +7,8 @@ import { Typography } from '@kode-frontend/uikit-rn/primitives';
 
 import { Radio } from './radio';
 
+const radioItems = Array.from(new Array(5), (_, index) => ({ id: index + 1 }));
+
 const RadioMeta: Meta<typeof Radio> = {
   args: {
     disabled: false,
@@ -25,6 +27,7 @@ const fn = () => undefined;
 
 export const RadioStory: Story = (args) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [checkedId, setCheckedId] = useState<number | null>(null);
 
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -65,6 +68,18 @@ export const RadioStory: Story = (args) => {
       <View style={styles.row}>
         <Radio {...args} disabled isChecked={false} isError onPress={fn} />
         <Radio {...args} disabled isChecked={true} isError onPress={fn} />
+      </View>
+
+      <Typography>Группа radio</Typography>
+      <View style={styles.row}>
+        {radioItems.map(({ id }) => (
+          <Radio
+            key={id}
+            {...args}
+            isChecked={checkedId === id}
+            onPress={() => setCheckedId(id)}
+          />
+        ))}
       </View>
     </ScrollView>
   );

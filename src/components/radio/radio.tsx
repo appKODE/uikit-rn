@@ -37,16 +37,12 @@ export const Radio = ({
     isDisabled: disabled,
   });
 
-  const rippleColor = theme.palette.all[iconColor];
-
   return (
     <Touchable
+      android_ripple={null}
       disabled={disabled}
       hitSlop={theme.components.radio.hitSlop}
-      rippleColor={rippleColor}
-      rippleRadius={theme.components.radio.rippleRadius}
       style={[styles.container(disabled), style]}
-      isRippleBorderless
       onPress={() => onPress(isChecked)}
     >
       <SwitchTransition active={isChecked ? 1 : 0} interpolateOpacity={0.4}>
