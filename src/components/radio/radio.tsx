@@ -17,7 +17,7 @@ export type RadioProps = {
   style?: StyleProp<ViewStyle>;
   isError?: boolean;
   isChecked: boolean;
-  onPress: (isChecked: boolean) => void;
+  onPress?: (isChecked: boolean) => void;
 };
 
 export const Radio = ({
@@ -42,8 +42,8 @@ export const Radio = ({
       android_ripple={null}
       disabled={disabled}
       hitSlop={theme.components.radio.hitSlop}
-      style={[styles.container(disabled), style]}
-      onPress={() => onPress(isChecked)}
+      style={[styles.container(disabled, Boolean(onPress)), style]}
+      onPress={onPress ? () => onPress(isChecked) : undefined}
     >
       <SwitchTransition active={isChecked ? 1 : 0} interpolateOpacity={0.4}>
         {renderWithProps<IconProps>(iconEmpty, {
@@ -61,8 +61,9 @@ export const Radio = ({
 };
 
 const styles = StyleSheet.create({
-  container: (disabled?: boolean) => ({
+  container: (disabled?: boolean, withOnPress?: boolean) => ({
     alignSelf: 'flex-start',
     opacity: disabled ? 0.4 : 1,
+    pointerEvents: withOnPress ? 'auto' : 'none',
   }),
 });

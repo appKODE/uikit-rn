@@ -81,6 +81,11 @@ export const RadioStory: Story = (args) => {
           />
         ))}
       </View>
+
+      <Typography>Без onPress</Typography>
+      <View style={styles.row}>
+        <Radio {...args} isChecked={true} />
+      </View>
     </ScrollView>
   );
 };
