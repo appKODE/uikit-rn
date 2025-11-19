@@ -11,3 +11,5 @@ export { Close } from './close';
 export { CheckboxSelected } from './checkbox-selected';
 export { CheckboxUnselected } from './checkbox-unselected';
 export { CheckboxIndeterminate } from './checkbox-indeterminate';
+export { RadioEmpty } from './radio-empty';
+export { RadioChecked } from './radio-checked';

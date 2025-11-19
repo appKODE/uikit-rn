@@ -32,6 +32,12 @@ export const createTheme = ({
       rippleRadius: 20,
       ...components?.checkbox,
     },
+    radio: {
+      hitSlop: 10,
+      iconSize: 24,
+      rippleRadius: 20,
+      ...components?.radio,
+    },
     page: {
       paddingHorizontal: 16,
       paddingVertical: 16,

@@ -147,6 +147,7 @@ const styles = StyleSheet.create((theme) => ({
   - Cell
   - Checkbox
   - [Snackbar](./docs/components/snackbar.md)
+  - [Radio](./docs/components/radio.md)
   - [Tabs](./docs/components/tabs.md)
   - [EmptyState](./docs/components/empty-state.md)
 - *layouts*
