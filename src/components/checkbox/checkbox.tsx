@@ -25,7 +25,7 @@ export type CheckboxProps = {
   style?: StyleProp<ViewStyle>;
   type: CheckboxType;
   isError?: boolean;
-  onPress: (type: CheckboxType) => void;
+  onPress?: (type: CheckboxType) => void;
 };
 
 export const Checkbox = ({
@@ -54,9 +54,9 @@ export const Checkbox = ({
       hitSlop={theme.components.checkbox.hitSlop}
       rippleColor={rippleColor}
       rippleRadius={theme.components.checkbox.rippleRadius}
-      style={[styles.container(disabled), style]}
+      style={[styles.container(disabled, Boolean(onPress)), style]}
       isRippleBorderless
-      onPress={() => onPress(type)}
+      onPress={onPress ? () => onPress(type) : undefined}
     >
       <SwitchTransition
         active={mapTypeToActiveNumber[type]}
@@ -82,8 +82,9 @@ export const Checkbox = ({
 };
 
 const styles = StyleSheet.create({
-  container: (disabled?: boolean) => ({
+  container: (disabled?: boolean, withOnPress?: boolean) => ({
     alignSelf: 'flex-start',
     opacity: disabled ? 0.4 : 1,
+    pointerEvents: withOnPress ? 'auto' : 'none',
   }),
 });
