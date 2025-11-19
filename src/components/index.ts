@@ -28,4 +28,5 @@ export {
   type SnackAnimationProps,
   SnackAnimations,
 } from './snackbar';
+export { Tabs, type TabsProps, type TabProps, Tab } from './tabs';
 export { EmptyState, type EmptyStateProps } from './empty-state';
