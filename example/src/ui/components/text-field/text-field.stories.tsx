@@ -97,6 +97,20 @@ export const TextFieldStory: Story = (args) => {
         onChangeText={setValue}
       />
 
+      <TextField
+        {...args}
+        disabled
+        withClean
+        error={error}
+        isHelperTextVisible={false}
+        label={'Поле со скрытым helperText'}
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        maxLength={100}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
+        value={value}
+        onChangeText={setValue}
+      />
+
       <Button
         onPress={() => {
           setError(error ? '' : 'Error message');

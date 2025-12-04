@@ -76,6 +76,22 @@ export const SelectFieldStory: Story = (args) => {
         onSelectItem={setValue}
       />
 
+      <Typography>Поле со скрытым helperText</Typography>
+      <SelectField
+        {...args}
+        withCleanButton
+        data={data}
+        error={error}
+        isHelperTextVisible={false}
+        label={'Label'}
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        placeholder={'Placeholder'}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
+        value={value}
+        onCleanItem={onCleanSelect}
+        onSelectItem={setValue}
+      />
+
       <Typography>Disabled поле</Typography>
       <SelectField
         {...args}

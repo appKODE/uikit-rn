@@ -27,6 +27,10 @@ export type FormFieldProps = {
    * Пояснительный текст
    */
   helperText?: string;
+  /**
+   * Отвечает за отображение helperText - пояснительного текста или текста ошибки. **Не влияет на отображение counterSlot**
+   */
+  isHelperTextVisible?: boolean;
   label?: string;
   labelColor?: TypographyColorKeys;
   labelVariant?: TypographyVariants;
@@ -50,6 +54,7 @@ export const FormField = ({
   fieldContainerStyle,
   fieldHeight = 'fixed',
   helperText,
+  isHelperTextVisible = true,
   label,
   labelColor,
   labelVariant = 'subhead2',
@@ -68,11 +73,7 @@ export const FormField = ({
   return (
     <Pressable testID={testID ?? 'form-field'} onPress={onPress}>
       {label ? (
-        <Typography
-          color={labelColor}
-          style={styles.label}
-          variant={labelVariant}
-        >
+        <Typography style={styles.label(labelColor)} variant={labelVariant}>
           {label}
         </Typography>
       ) : null}
@@ -86,15 +87,17 @@ export const FormField = ({
       </View>
 
       <View style={styles.footer}>
-        <CollapseTransition
-          collapsed={!helperText}
-          style={styles.helperTextContainer}
-          unmountWhenFade="children"
-        >
-          <Typography style={styles.helperText} variant="caption1">
-            {helperText ?? ' '}
-          </Typography>
-        </CollapseTransition>
+        {isHelperTextVisible ? (
+          <CollapseTransition
+            collapsed={!helperText}
+            style={styles.helperTextContainer}
+            unmountWhenFade="children"
+          >
+            <Typography style={styles.helperText} variant="caption1">
+              {helperText ?? ' '}
+            </Typography>
+          </CollapseTransition>
+        ) : null}
 
         {counterSlot}
       </View>
@@ -182,28 +185,34 @@ const styles = StyleSheet.create((theme) => ({
       },
     },
   },
-  label: {
-    paddingBottom: 8,
-    paddingHorizontal: 16,
-    variants: {
-      state: {
-        default: {
-          color: theme.palette.text.textSecondary,
-        },
-        disabled: {
-          color: theme.palette.interactive.textDisabled,
-        },
-        error: {
-          color: theme.palette.text.textNegative,
-        },
-        focusEmpty: {
-          color: theme.palette.text.textAccent,
-        },
-        focusFilling: {
-          color: theme.palette.text.textAccent,
+  label: (labelColor?: TypographyColorKeys) => {
+    const projectLabelColor = labelColor
+      ? theme.palette.all[labelColor]
+      : undefined;
+
+    return {
+      paddingBottom: 8,
+      paddingHorizontal: 16,
+      variants: {
+        state: {
+          default: {
+            color: projectLabelColor ?? theme.palette.text.textSecondary,
+          },
+          disabled: {
+            color: projectLabelColor ?? theme.palette.interactive.textDisabled,
+          },
+          error: {
+            color: projectLabelColor ?? theme.palette.text.textNegative,
+          },
+          focusEmpty: {
+            color: projectLabelColor ?? theme.palette.text.textAccent,
+          },
+          focusFilling: {
+            color: projectLabelColor ?? theme.palette.text.textAccent,
+          },
         },
       },
-    },
+    };
   },
 }));
 
