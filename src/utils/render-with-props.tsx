@@ -10,7 +10,12 @@ export const renderWithProps = <T extends object>(
 ): ReactNode => {
   // valid JSX element like <IconCard />
   if (isValidElement<T>(renderable)) {
-    return React.cloneElement(renderable, additionalProps);
+    const mergedProps = {
+      ...additionalProps,
+      ...renderable.props,
+    };
+
+    return React.cloneElement(renderable, mergedProps);
   }
 
   // component type like IconCard
