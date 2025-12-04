@@ -84,6 +84,17 @@ export const TextAreaFieldStory: Story = (args) => {
         onChangeText={setValue}
       />
 
+      <TextAreaField
+        {...args}
+        error={error}
+        isHelperTextVisible={false}
+        label={'Поле со скрытым helperText'}
+        labelColor={'textTertiary'}
+        labelVariant={'headline3'}
+        value={value}
+        onChangeText={setValue}
+      />
+
       <Button
         onPress={() => {
           setError(error ? '' : 'Error message');

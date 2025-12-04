@@ -32,6 +32,7 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
       fieldContainerStyle,
       fieldHeight,
       helperText,
+      isHelperTextVisible,
       counterMaxLength,
       label,
       labelColor,
@@ -97,6 +98,7 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
         fieldContainerStyle={fieldContainerStyle}
         fieldHeight={fieldHeight}
         helperText={error || helperText}
+        isHelperTextVisible={isHelperTextVisible}
         label={label}
         labelColor={labelColor}
         labelVariant={labelVariant}
