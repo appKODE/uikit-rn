@@ -12,7 +12,7 @@ export const renderWithProps = <T extends object>(
   if (isValidElement<T>(renderable)) {
     const mergedProps = {
       ...additionalProps,
-      ...renderable.props,
+      ...(renderable.props ?? {}),
     };
 
     return React.cloneElement(renderable, mergedProps);
