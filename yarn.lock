@@ -13254,6 +13254,8 @@ __metadata:
     "@react-native/babel-preset": 0.79.2
     "@react-native/metro-config": 0.79.2
     "@react-native/typescript-config": 0.79.2
+    "@react-navigation/bottom-tabs": ^7.4.7
+    "@react-navigation/native": ^7.1.17
     "@storybook/react-native": ^9.0.18
     "@types/react": ^19.0.0
     react: 19.0.0
