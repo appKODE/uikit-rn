@@ -11,7 +11,7 @@
     "storybook-build": "sb-rn-get-stories"
   },
   "dependencies": {
-    "@gorhom/bottom-sheet": "^5.1.8",
+    "@gorhom/bottom-sheet": "^5.2.8",
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-navigation/bottom-tabs": "^7.4.7",
     "@react-navigation/native": "^7.1.17",
@@ -20,14 +20,13 @@
     "react-dom": "^19.1.1",
     "react-native": "0.79.2",
     "react-native-edge-to-edge": "^1.6.2",
-    "react-native-gesture-handler": "^2.27.2",
+    "react-native-gesture-handler": "^2.29.1",
     "react-native-keyboard-controller": "^1.18.2",
     "react-native-nitro-modules": "^0.27.2",
-    "react-native-reanimated": "^4.0.1",
+    "react-native-reanimated": "3.19.4",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-svg": "^15.12.0",
     "react-native-unistyles": "^3.0.7",
-    "react-native-worklets": "^0.4.0",
     "storybook": "^9.0.18"
   },
   "devDependencies": {
