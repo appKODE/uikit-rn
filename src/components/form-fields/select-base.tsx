@@ -33,7 +33,7 @@ export const SelectBase = ({
   error,
   fieldContainerStyle,
   helperText,
-  isHelperTextVisible,
+  renderHelperText,
   label,
   labelColor,
   labelVariant,
@@ -77,7 +77,7 @@ export const SelectBase = ({
     <FormField
       fieldContainerStyle={fieldContainerStyle}
       helperText={error || helperText}
-      isHelperTextVisible={isHelperTextVisible}
+      renderHelperText={renderHelperText}
       label={label}
       labelColor={labelColor}
       labelVariant={labelVariant}

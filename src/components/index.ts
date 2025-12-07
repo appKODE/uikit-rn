@@ -12,6 +12,8 @@ export {
   type TextAreaFieldProps,
   TextField,
   type TextFieldProps,
+  FormField,
+  type FormFieldProps,
 } from './form-fields';
 export { Divider, type DividerProps } from './divider';
 export { Cell, type CellProps } from './cell';

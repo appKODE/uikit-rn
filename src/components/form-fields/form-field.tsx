@@ -5,6 +5,7 @@ import {
   type StyleProp,
   View,
   type ViewStyle,
+  type TextStyle,
 } from 'react-native';
 
 import { StyleSheet } from 'react-native-unistyles';
@@ -13,6 +14,19 @@ import type { TypographyColorKeys, TypographyVariants } from '../../types';
 
 import { CollapseTransition, Typography } from '../../primitives';
 import { type FormFieldState, type FormFieldVariant } from './types';
+
+type TRenderHelperTextParams = {
+  style: TextStyle;
+  text?: string;
+};
+
+const DefaultHelperText = ({ text, style }: TRenderHelperTextParams) => {
+  return (
+    <Typography style={style} variant={'caption1'}>
+      {text ?? ' '}
+    </Typography>
+  );
+};
 
 export type FormFieldProps = {
   children: ReactElement;
@@ -27,10 +41,6 @@ export type FormFieldProps = {
    * Пояснительный текст
    */
   helperText?: string;
-  /**
-   * Отвечает за отображение helperText - пояснительного текста или текста ошибки. **Не влияет на отображение counterSlot**
-   */
-  isHelperTextVisible?: boolean;
   label?: string;
   labelColor?: TypographyColorKeys;
   labelVariant?: TypographyVariants;
@@ -46,6 +56,7 @@ export type FormFieldProps = {
    */
   variant?: FormFieldVariant;
   onPress?: (e: GestureResponderEvent) => void;
+  renderHelperText?: ((params: TRenderHelperTextParams) => ReactElement) | null;
 };
 
 export const FormField = ({
@@ -54,7 +65,6 @@ export const FormField = ({
   fieldContainerStyle,
   fieldHeight = 'fixed',
   helperText,
-  isHelperTextVisible = true,
   label,
   labelColor,
   labelVariant = 'subhead2',
@@ -64,6 +74,7 @@ export const FormField = ({
   trailingAddon,
   variant = 'default',
   onPress,
+  renderHelperText = DefaultHelperText,
 }: FormFieldProps) => {
   styles.useVariants({
     fieldHeight,
@@ -87,17 +98,16 @@ export const FormField = ({
       </View>
 
       <View style={styles.footer}>
-        {isHelperTextVisible ? (
-          <CollapseTransition
-            collapsed={!helperText}
-            style={styles.helperTextContainer}
-            unmountWhenFade="children"
-          >
-            <Typography style={styles.helperText} variant="caption1">
-              {helperText ?? ' '}
-            </Typography>
-          </CollapseTransition>
-        ) : null}
+        <CollapseTransition
+          collapsed={!helperText}
+          style={styles.helperTextContainer}
+          unmountWhenFade="children"
+        >
+          {renderHelperText?.({
+            style: styles.helperText,
+            text: helperText,
+          })}
+        </CollapseTransition>
 
         {counterSlot}
       </View>

@@ -76,13 +76,35 @@ export const SelectFieldStory: Story = (args) => {
         onSelectItem={setValue}
       />
 
+      <Typography>Поле с кастомным helperText</Typography>
+      <SelectField
+        {...args}
+        withCleanButton
+        data={data}
+        error={error}
+        renderHelperText={({ text, style }) => {
+          return (
+            <Typography variant={'subhead1'} style={[style, styles.helperText]}>
+              {text}
+            </Typography>
+          );
+        }}
+        label={'Label'}
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        placeholder={'Placeholder'}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
+        value={value}
+        onCleanItem={onCleanSelect}
+        onSelectItem={setValue}
+      />
+
       <Typography>Поле со скрытым helperText</Typography>
       <SelectField
         {...args}
         withCleanButton
         data={data}
         error={error}
-        isHelperTextVisible={false}
+        renderHelperText={null}
         label={'Label'}
         leadingAddon={<PlaceholderIcon color="iconTertiary" />}
         placeholder={'Placeholder'}
@@ -120,5 +142,8 @@ const styles = StyleSheet.create({
   contentContainer: {
     gap: 16,
     padding: 16,
+  },
+  helperText: {
+    color: 'blue',
   },
 });
