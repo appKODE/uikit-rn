@@ -25,7 +25,7 @@ module.exports = function (api) {
           autoProcessPaths: ['@kode-frontend/uikit-rn'],
         },
       ],
-      'react-native-worklets/plugin',
+      'react-native-reanimated/plugin',
     ],
   };
 };
