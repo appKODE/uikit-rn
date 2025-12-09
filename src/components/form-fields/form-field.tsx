@@ -5,6 +5,7 @@ import {
   type StyleProp,
   View,
   type ViewStyle,
+  type TextStyle,
 } from 'react-native';
 
 import { StyleSheet } from 'react-native-unistyles';
@@ -13,6 +14,19 @@ import type { TypographyColorKeys, TypographyVariants } from '../../types';
 
 import { CollapseTransition, Typography } from '../../primitives';
 import { type FormFieldState, type FormFieldVariant } from './types';
+
+type TRenderHelperTextParams = {
+  style: TextStyle;
+  text?: string;
+};
+
+const DefaultHelperText = ({ text, style }: TRenderHelperTextParams) => {
+  return (
+    <Typography style={style} variant={'caption1'}>
+      {text ?? ' '}
+    </Typography>
+  );
+};
 
 export type FormFieldProps = {
   children: ReactElement;
@@ -42,6 +56,7 @@ export type FormFieldProps = {
    */
   variant?: FormFieldVariant;
   onPress?: (e: GestureResponderEvent) => void;
+  renderHelperText?: ((params: TRenderHelperTextParams) => ReactElement) | null;
 };
 
 export const FormField = ({
@@ -59,6 +74,7 @@ export const FormField = ({
   trailingAddon,
   variant = 'default',
   onPress,
+  renderHelperText = DefaultHelperText,
 }: FormFieldProps) => {
   styles.useVariants({
     fieldHeight,
@@ -68,11 +84,7 @@ export const FormField = ({
   return (
     <Pressable testID={testID ?? 'form-field'} onPress={onPress}>
       {label ? (
-        <Typography
-          color={labelColor}
-          style={styles.label}
-          variant={labelVariant}
-        >
+        <Typography style={styles.label(labelColor)} variant={labelVariant}>
           {label}
         </Typography>
       ) : null}
@@ -91,9 +103,10 @@ export const FormField = ({
           style={styles.helperTextContainer}
           unmountWhenFade="children"
         >
-          <Typography style={styles.helperText} variant="caption1">
-            {helperText ?? ' '}
-          </Typography>
+          {renderHelperText?.({
+            style: styles.helperText,
+            text: helperText,
+          })}
         </CollapseTransition>
 
         {counterSlot}
@@ -182,28 +195,34 @@ const styles = StyleSheet.create((theme) => ({
       },
     },
   },
-  label: {
-    paddingBottom: 8,
-    paddingHorizontal: 16,
-    variants: {
-      state: {
-        default: {
-          color: theme.palette.text.textSecondary,
-        },
-        disabled: {
-          color: theme.palette.interactive.textDisabled,
-        },
-        error: {
-          color: theme.palette.text.textNegative,
-        },
-        focusEmpty: {
-          color: theme.palette.text.textAccent,
-        },
-        focusFilling: {
-          color: theme.palette.text.textAccent,
+  label: (labelColor?: TypographyColorKeys) => {
+    const projectLabelColor = labelColor
+      ? theme.palette.all[labelColor]
+      : undefined;
+
+    return {
+      paddingBottom: 8,
+      paddingHorizontal: 16,
+      variants: {
+        state: {
+          default: {
+            color: projectLabelColor ?? theme.palette.text.textSecondary,
+          },
+          disabled: {
+            color: projectLabelColor ?? theme.palette.interactive.textDisabled,
+          },
+          error: {
+            color: projectLabelColor ?? theme.palette.text.textNegative,
+          },
+          focusEmpty: {
+            color: projectLabelColor ?? theme.palette.text.textAccent,
+          },
+          focusFilling: {
+            color: projectLabelColor ?? theme.palette.text.textAccent,
+          },
         },
       },
-    },
+    };
   },
 }));
 

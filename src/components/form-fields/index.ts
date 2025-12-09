@@ -5,3 +5,4 @@ export {
   type SelectFieldProps,
   type SelectFieldRef,
 } from './select-field';
+export { FormField, type FormFieldProps } from './form-field';

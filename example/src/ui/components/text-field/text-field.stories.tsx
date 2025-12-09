@@ -89,9 +89,43 @@ export const TextFieldStory: Story = (args) => {
       <TextField
         {...args}
         withClean
+        counterMaxLength={100}
         error={error}
         label="Label"
         leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
+        value={value}
+        onChangeText={setValue}
+      />
+
+      <TextField
+        {...args}
+        withClean
+        counterMaxLength={100}
+        error={error}
+        label={'Поле с кастомным helperText'}
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        maxLength={100}
+        renderHelperText={({ text, style }) => {
+          return (
+            <Typography variant={'subhead1'} style={[style, styles.helperText]}>
+              {text}
+            </Typography>
+          );
+        }}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
+        value={value}
+        onChangeText={setValue}
+      />
+
+      <TextField
+        {...args}
+        withClean
+        error={error}
+        label={'Поле со скрытым helperText'}
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        maxLength={100}
+        renderHelperText={null}
         trailingAddon={<PlaceholderIcon color="iconTertiary" />}
         value={value}
         onChangeText={setValue}
@@ -109,5 +143,11 @@ export const TextFieldStory: Story = (args) => {
 };
 
 const styles = StyleSheet.create({
-  contentContainer: { gap: 16, padding: 16 },
+  contentContainer: {
+    gap: 16,
+    padding: 16,
+  },
+  helperText: {
+    color: 'blue',
+  },
 });

@@ -46,6 +46,7 @@ export const SelectField = forwardRef(
       error,
       fieldContainerStyle,
       helperText,
+      renderHelperText,
       label,
       labelColor,
       labelVariant,
@@ -106,6 +107,7 @@ export const SelectField = forwardRef(
         error={error}
         fieldContainerStyle={fieldContainerStyle}
         helperText={helperText}
+        renderHelperText={renderHelperText}
         label={label}
         labelColor={labelColor}
         labelVariant={labelVariant}

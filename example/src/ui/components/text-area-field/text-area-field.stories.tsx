@@ -84,6 +84,34 @@ export const TextAreaFieldStory: Story = (args) => {
         onChangeText={setValue}
       />
 
+      <TextAreaField
+        {...args}
+        error={error}
+        label={'Поле с кастомным helperText'}
+        renderHelperText={({ text, style }) => {
+          return (
+            <Typography variant={'subhead1'} style={[style, styles.helperText]}>
+              {text}
+            </Typography>
+          );
+        }}
+        labelColor={'textTertiary'}
+        labelVariant={'headline3'}
+        value={value}
+        onChangeText={setValue}
+      />
+
+      <TextAreaField
+        {...args}
+        error={error}
+        renderHelperText={null}
+        label={'Поле со скрытым helperText'}
+        labelColor={'textTertiary'}
+        labelVariant={'headline3'}
+        value={value}
+        onChangeText={setValue}
+      />
+
       <Button
         onPress={() => {
           setError(error ? '' : 'Error message');
@@ -103,5 +131,8 @@ const styles = StyleSheet.create({
   fieldContainer: {
     borderRadius: 0,
     minHeight: 200,
+  },
+  helperText: {
+    color: 'blue',
   },
 });

@@ -42,6 +42,7 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
       onBlur,
       onChangeText,
       onFocus,
+      renderHelperText,
       ...rest
     },
     ref
@@ -89,6 +90,7 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
         counterSlot={
           counterMaxLength ? (
             <Typography
+              style={styles.counter}
               color={counterColor}
               variant={'caption1'}
             >{`${valueLength}/${counterMaxLength}`}</Typography>
@@ -97,6 +99,7 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
         fieldContainerStyle={fieldContainerStyle}
         fieldHeight={fieldHeight}
         helperText={error || helperText}
+        renderHelperText={renderHelperText}
         label={label}
         labelColor={labelColor}
         labelVariant={labelVariant}
@@ -122,6 +125,9 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
 );
 
 const styles = StyleSheet.create((theme) => ({
+  counter: {
+    marginLeft: 'auto',
+  },
   input: {
     flex: 1,
     marginBottom: theme.scale.height(12),
