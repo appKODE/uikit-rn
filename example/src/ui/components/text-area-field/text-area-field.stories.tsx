@@ -112,6 +112,26 @@ export const TextAreaFieldStory: Story = (args) => {
         onChangeText={setValue}
       />
 
+      <TextAreaField
+        {...args}
+        error={error}
+        label={'Поле с кастомным labelText'}
+        renderLabelText={({ style }) => {
+          return (
+            <Typography
+              variant={'headline4'}
+              style={[style, styles.helperText]}
+            >
+              Это кастомный лейбл
+            </Typography>
+          );
+        }}
+        labelColor={'textTertiary'}
+        labelVariant={'headline3'}
+        value={value}
+        onChangeText={setValue}
+      />
+
       <Button
         onPress={() => {
           setError(error ? '' : 'Error message');

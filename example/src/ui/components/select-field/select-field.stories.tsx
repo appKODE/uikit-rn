@@ -127,6 +127,30 @@ export const SelectFieldStory: Story = (args) => {
         onSelectItem={setValue}
       />
 
+      <Typography>Поле с кастомным labelText</Typography>
+      <SelectField
+        {...args}
+        withCleanButton
+        data={data}
+        error={error}
+        renderLabelText={({ style }) => {
+          return (
+            <Typography
+              variant={'headline4'}
+              style={[style, styles.helperText]}
+            >
+              Это кастомный лейбл
+            </Typography>
+          );
+        }}
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        placeholder={'Placeholder'}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
+        value={value}
+        onCleanItem={onCleanSelect}
+        onSelectItem={setValue}
+      />
+
       <Button
         onPress={() => {
           setError(error ? '' : 'Error message');

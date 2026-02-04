@@ -18,6 +18,7 @@ import { AlertHexagon, Delete } from '../../icons';
 export type TextFieldProps = TextFieldBaseProps & {
   withClean?: boolean;
 };
+
 export const TextField = forwardRef<TextInputRef, TextFieldProps>(
   ({ trailingAddon, withClean = false, ...rest }, ref) => {
     const inputRef = useRef<TextInputRef>(null);
