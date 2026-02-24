@@ -34,6 +34,7 @@ export const SelectBase = ({
   fieldContainerStyle,
   helperText,
   renderHelperText,
+  renderLabelText,
   label,
   labelColor,
   labelVariant,
@@ -78,6 +79,7 @@ export const SelectBase = ({
       fieldContainerStyle={fieldContainerStyle}
       helperText={error || helperText}
       renderHelperText={renderHelperText}
+      renderLabelText={renderLabelText}
       label={label}
       labelColor={labelColor}
       labelVariant={labelVariant}

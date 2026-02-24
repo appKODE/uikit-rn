@@ -5,28 +5,22 @@ import {
   type StyleProp,
   View,
   type ViewStyle,
-  type TextStyle,
 } from 'react-native';
 
 import { StyleSheet } from 'react-native-unistyles';
 
 import type { TypographyColorKeys, TypographyVariants } from '../../types';
 
-import { CollapseTransition, Typography } from '../../primitives';
+import { CollapseTransition } from '../../primitives';
 import { type FormFieldState, type FormFieldVariant } from './types';
-
-type TRenderHelperTextParams = {
-  style: TextStyle;
-  text?: string;
-};
-
-const DefaultHelperText = ({ text, style }: TRenderHelperTextParams) => {
-  return (
-    <Typography style={style} variant={'caption1'}>
-      {text ?? ' '}
-    </Typography>
-  );
-};
+import {
+  type TRenderHelperTextParams,
+  DefaultHelperText,
+} from './default-helper-text';
+import {
+  DefaultLabelText,
+  type TRenderLabelTextParams,
+} from './default-label-text';
 
 export type FormFieldProps = {
   children: ReactElement;
@@ -57,6 +51,7 @@ export type FormFieldProps = {
   variant?: FormFieldVariant;
   onPress?: (e: GestureResponderEvent) => void;
   renderHelperText?: ((params: TRenderHelperTextParams) => ReactElement) | null;
+  renderLabelText?: (params: TRenderLabelTextParams) => ReactElement | null;
 };
 
 export const FormField = ({
@@ -75,6 +70,7 @@ export const FormField = ({
   variant = 'default',
   onPress,
   renderHelperText = DefaultHelperText,
+  renderLabelText = DefaultLabelText,
 }: FormFieldProps) => {
   styles.useVariants({
     fieldHeight,
@@ -83,11 +79,11 @@ export const FormField = ({
 
   return (
     <Pressable testID={testID ?? 'form-field'} onPress={onPress}>
-      {label ? (
-        <Typography style={styles.label(labelColor)} variant={labelVariant}>
-          {label}
-        </Typography>
-      ) : null}
+      {renderLabelText?.({
+        style: styles.label(labelColor),
+        text: label,
+        variant: labelVariant,
+      })}
 
       <View style={[styles.inner, fieldContainerStyle]}>
         {leadingAddon}

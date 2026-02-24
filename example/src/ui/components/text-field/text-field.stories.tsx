@@ -131,6 +131,28 @@ export const TextFieldStory: Story = (args) => {
         onChangeText={setValue}
       />
 
+      <TextField
+        {...args}
+        withClean
+        counterMaxLength={100}
+        error={error}
+        leadingAddon={<PlaceholderIcon color="iconTertiary" />}
+        maxLength={100}
+        renderLabelText={({ style }) => {
+          return (
+            <Typography
+              variant={'headline4'}
+              style={[style, styles.helperText]}
+            >
+              Это кастомный лейбл
+            </Typography>
+          );
+        }}
+        trailingAddon={<PlaceholderIcon color="iconTertiary" />}
+        value={value}
+        onChangeText={setValue}
+      />
+
       <Button
         onPress={() => {
           setError(error ? '' : 'Error message');

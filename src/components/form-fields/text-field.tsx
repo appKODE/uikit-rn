@@ -43,6 +43,7 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
       onChangeText,
       onFocus,
       renderHelperText,
+      renderLabelText,
       ...rest
     },
     ref
@@ -100,6 +101,7 @@ export const TextField = forwardRef<TextInputRef, TextFieldProps>(
         fieldHeight={fieldHeight}
         helperText={error || helperText}
         renderHelperText={renderHelperText}
+        renderLabelText={renderLabelText}
         label={label}
         labelColor={labelColor}
         labelVariant={labelVariant}
